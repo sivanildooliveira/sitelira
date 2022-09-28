@@ -2,7 +2,7 @@
 
 {% block body %}
     <div class="container">
-        <h1>Faça Login ou Crie sua Conta para dd continuar</h1>
+        <h1>Faça Login ou Crie sua Conta para continuar</h1>
         <hr>
         <div class="row">
             <div class="col">
@@ -11,32 +11,29 @@
                     <legend>Login</legend>
                     <fieldset>
                         <div class="form-group">
-                            {{ form_login.lemail.label(class="form-control-label") }}
-
-                            {% if form_login.lemail.errors and LC == 'l' %}
-                                {{ form_login.lemail(class="form-control is-invalid") }}
-                                {% for erro in form_login.lemail.errors %}
-                                    <div class="invalid-feedback">
-                                        {{ erro }}
-                                    </div>
+                            {{ form_login.email.label(class="form-control-label") }}
+                            {% if form_login.email.errors %}
+                                {{ form_login.email(class="form-control is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for erro in form_login.email.errors %}
+                                    {{ erro }}
                                 {% endfor %}
+                            </div>
                             {% else %}
-                                {{ form_login.lemail(class="form-control") }}
+                                {{ form_login.email(class="form-control") }}
                             {% endif %}
-
-
                         </div>
                         <div class="form-group">
-                            {{ form_login.lsenha.label(class="form-control-label") }}
-                            {% if form_login.lsenha.errors and LC == 'l' %}
-                                {{ form_login.lsenha(class="form-control is-invalid") }}
-                                {% for erro in form_login.lsenha.errors %}
-                                    <div class="invalid-feedback">
-                                        {{ erro }}
-                                    </div>
+                            {{ form_login.senha.label(class="form-control-label") }}
+                            {% if form_login.senha.errors %}
+                                {{ form_login.senha(class="form-control is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for erro in form_login.senha.errors %}
+                                    {{ erro }}
                                 {% endfor %}
+                            </div>
                             {% else %}
-                                {{ form_login.lsenha(class="form-control") }}
+                                {{ form_login.senha(class="form-control") }}
                             {% endif %}
                         </div>
                         <div class="form-group">
@@ -54,52 +51,52 @@
                     <fieldset>
                         <div class="form-group">
                             {{ form_criarconta.username.label(class="form-control-label") }}
-                            {% if form_criarconta.username.errors and LC == 'c' %}
+                            {% if form_criarconta.username.errors %}
                                 {{ form_criarconta.username(class="form-control is-invalid") }}
+                            <div class="invalid-feedback">
                                 {% for erro in form_criarconta.username.errors %}
-                                    <div class="invalid-feedback">
-                                        {{ erro }}
-                                    </div>
+                                    {{ erro }}
                                 {% endfor %}
+                            </div>
                             {% else %}
                                 {{ form_criarconta.username(class="form-control") }}
                             {% endif %}
                         </div>
                         <div class="form-group">
                             {{ form_criarconta.email.label(class="form-control-label") }}
-                            {% if form_criarconta.email.errors and LC == 'c' %}
+                            {% if form_criarconta.email.errors %}
                                 {{ form_criarconta.email(class="form-control is-invalid") }}
+                            <div class="invalid-feedback">
                                 {% for erro in form_criarconta.email.errors %}
-                                    <div class="invalid-feedback">
-                                        {{ erro }}
-                                    </div>
+                                    {{ erro }}
                                 {% endfor %}
+                            </div>
                             {% else %}
                                 {{ form_criarconta.email(class="form-control") }}
                             {% endif %}
                         </div>
                         <div class="form-group">
                             {{ form_criarconta.senha.label(class="form-control-label") }}
-                            {% if form_criarconta.senha.errors and LC == 'c' %}
+                            {% if form_criarconta.senha.errors %}
                                 {{ form_criarconta.senha(class="form-control is-invalid") }}
+                            <div class="invalid-feedback">
                                 {% for erro in form_criarconta.senha.errors %}
-                                    <div class="invalid-feedback">
-                                        {{ erro }}
-                                    </div>
+                                    {{ erro }}
                                 {% endfor %}
+                            </div>
                             {% else %}
                                 {{ form_criarconta.senha(class="form-control") }}
                             {% endif %}
                         </div>
                         <div class="form-group">
                             {{ form_criarconta.confirmacao_senha.label(class="form-control-label") }}
-                            {% if form_criarconta.confirmacao_senha.errors and LC == 'c' %}
+                            {% if form_criarconta.confirmacao_senha.errors %}
                                 {{ form_criarconta.confirmacao_senha(class="form-control is-invalid") }}
+                            <div class="invalid-feedback">
                                 {% for erro in form_criarconta.confirmacao_senha.errors %}
-                                    <div class="invalid-feedback">
-                                        {{ erro }}
-                                    </div>
+                                    {{ erro }}
                                 {% endfor %}
+                            </div>
                             {% else %}
                                 {{ form_criarconta.confirmacao_senha(class="form-control") }}
                             {% endif %}
