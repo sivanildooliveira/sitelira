@@ -12,9 +12,9 @@ class FormCriarConta(FlaskForm):
     botao_submit_criarconta = SubmitField('Criar Conta')
     
     def validate_email(self, email):
-    	usuario = Usuarios.query.filter_by(email=email.data).first()
-    	if usuario:
-    		raise ValidationError('E-mail já Cadastrado! tente outro E-mail.')
+        usuario = Usuarios.query.filter_by(email=email.data).first()
+        if usuario:
+            raise ValidationError('E-mail já Cadastrado! tente outro E-mail.')
 
 
 class FormLogin(FlaskForm):
@@ -22,20 +22,10 @@ class FormLogin(FlaskForm):
     lsenha = PasswordField('Senha', validators=[DataRequired(), Length(6, 20)])
     lembrar_dados = BooleanField('Lembrar Dados de Acesso')
     botao_submit_login = SubmitField('Fazer Login')
-    
-    #def validate_lemail(self, lemail):
-#    	usuario = Usuarios.query.filter_by(email=lemail.data).first()
-#    	if not usuario:
-#    		raise ValidationError('E-mail não Cadastrado! verifique seu e-mail ou Crie um conta para continuar.')
-#    	
-#    def validate_lsenha(self, lsenha):
-#    	
-#    	d_senha = Usuarios.query.filter_by(email=self.lemail.data).first()
-#    	try:
-#    		senha_user = d_senha.senha
-#    	except:
-#    		return 
-#    	
-#    	if senha_user != lsenha.data:
-#    		raise ValidationError('Senha incorreta!')
-    	
+
+
+class FormEditarPerfil(FlaskForm):
+    username = StringField('Nome de Usuário', validators=[DataRequired()])
+    email = StringField('E-mail', validators=[DataRequired(), Email()])
+    botao_submit_editarperfil = SubmitField('Salvar')
+

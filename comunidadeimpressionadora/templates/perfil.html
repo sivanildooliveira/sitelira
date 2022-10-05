@@ -18,7 +18,11 @@
                         <img id="foto-perfil" src="{{ foto_perfil }}" class="rounded-circle">
                     </div>
                     <div class="col-md-12 col-sm-12 col-xs-12 user-detail-section1 text-center">
-                        <button id="btn-contact" (click)="clearModal()" data-toggle="modal" data-target="#contact" class="btn btn-success btn-block follow">editar perfil</button>                              
+                        {% if 'editar' not in request.get %}
+                            <a href="{{ url_for('editar_perfil') }}"><button id="btn-contact" (click)="clearModal()" data-toggle="modal" data-target="#contact" class="btn btn-success btn-block follow">editar perfil</button></a>
+                        {% else %}
+                            <br><br>
+                        {% endif %}                           
                     </div>
                     <div class="row user-detail-row">
                         <div class="col-md-12 col-sm-12 user-detail-section2 pull-left">
@@ -176,4 +180,9 @@
         </div>
     </div>
 </div>
+
+{% block form_editarperfil %}
+
+{% endblock %}
+
 {% endblock %}
