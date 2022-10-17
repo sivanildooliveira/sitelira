@@ -84,7 +84,7 @@ def login():
 @app.route('/sair')
 def sair():
 	logout_user()
-	flash('Logout feito com sucesso', 'alert-success')
+	flash('Logout feito com sucesso', 'alert-warning')
 	return redirect(url_for('home'))
 
 @app.route('/perfil')

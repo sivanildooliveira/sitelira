@@ -39,9 +39,11 @@
                                 {{ form_login.lsenha(class="form-control") }}
                             {% endif %}
                         </div>
-                        <div class="form-group">
-                            {{ form_login.lembrar_dados.label(class="form-check-label") }}
+                        <div class="form-group mt-2">
+
                             {{ form_login.lembrar_dados(class="form-check-input") }}
+                            {{ form_login.lembrar_dados.label(class="form-check-label") }}
+                            
                         </div>
                     </fieldset>
                     {{ form_login.botao_submit_login(class="btn btn-primary mt-2") }}

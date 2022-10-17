@@ -15,12 +15,17 @@ class FormCriarConta(FlaskForm):
         usuario = Usuarios.query.filter_by(email=email.data).first()
         if usuario:
             raise ValidationError('E-mail já Cadastrado! tente outro E-mail.')
+    
+    def validate_username(self, username):
+        usuario = Usuarios.query.filter_by(username=username.data).first()
+        if usuario:
+            raise ValidationError("Nome de usuario já existe! Tente outro username.")
 
 
 class FormLogin(FlaskForm):
     lemail = StringField('E-mail', validators=[DataRequired(), Email()])
     lsenha = PasswordField('Senha', validators=[DataRequired(), Length(6, 20)])
-    lembrar_dados = BooleanField('Lembrar Dados de Acesso')
+    lembrar_dados = BooleanField('Lembrar Dados de Acesso', default=True)
     botao_submit_login = SubmitField('Fazer Login')
 
 
