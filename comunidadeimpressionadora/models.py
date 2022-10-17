@@ -1,4 +1,4 @@
-from comunidadeimpressionadora import database, login_manager
+from comunidadeimpressionadora import app, database, login_manager
 from datetime import datetime
 from flask_login import UserMixin
 
@@ -24,3 +24,7 @@ class Post(database.Model):
     data_criacao = database.Column(database.String, nullable=False, default=datetime.utcnow)
     id_usuario = database.Column(database.Integer, database.ForeignKey('usuarios.id'), nullable=False)
 
+
+""" 
+with app.app_context():
+    database.create_all() """
