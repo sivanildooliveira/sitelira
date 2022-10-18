@@ -16,11 +16,11 @@
 </head>
 <body>
 
-    
+    {% include 'navbar.html' %}
 
     <div class="container">
     
-    	{% include 'navbar.html' %}
+    	
     	
         {% with mensagens = get_flashed_messages(with_categories=True) %}
             {% if mensagens %}

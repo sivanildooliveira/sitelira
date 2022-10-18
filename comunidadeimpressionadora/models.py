@@ -25,6 +25,6 @@ class Post(database.Model):
     id_usuario = database.Column(database.Integer, database.ForeignKey('usuarios.id'), nullable=False)
 
 
-""" 
+
 with app.app_context():
-    database.create_all() """
+    database.create_all()

@@ -1,5 +1,6 @@
 {% extends 'perfil.html' %}
 
+
 {% block form_editarperfil %}
 
 <div class="container">
@@ -8,7 +9,7 @@
         <div class="col">
             <form method="POST" action="" class="border p-4 mt-2">
                 {{ form.csrf_token }}
-                <legend>Login</legend>
+                <legend>Editar Perfil</legend>
                 <fieldset>
 
                     <div class="form-group">
@@ -39,6 +40,12 @@
                         {% else %}
                             {{ form.email(class="form-control") }}
                         {% endif %}
+                    </div>
+                    
+                    <div class="form-group">
+                    	{{ form.foto_perfil.label(class="form-control-label") }}
+                    	{{ form.foto_perfil(class="form-control") }}
+                    
                     </div>
                     
                 </fieldset>

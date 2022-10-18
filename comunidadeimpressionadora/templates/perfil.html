@@ -2,155 +2,127 @@
 
 {% block head %}
     <style>
-        body {
-            
-        }
-
-        #cab {
-            position: relative;
-            display: flex;
-            width: 100%;
-            padding: 10px;
-
-        }
-
-        #foto-name-edit {
-            display: inline-block;
-        }
-
-        #foto-name-edit img{
-            width: 20vw;
-            height: 20vw;
-            max-width: 200px;
-            max-height: 200px;
-            border-radius: 50%;
-        }
-
-        #foto-name-edit a{
-            display: block;
-            width: 80%;
-            margin: 10px auto;
-            max-width: 200px;
-            padding: 1%;
-            border-radius: 5px;
-            font-weight: bold;
-            font-size: .7rem;
-            text-align: center;
-            text-decoration: none;
-            color: rgb(32, 163, 250);
-            border: 2px solid rgb(32, 163, 250);
-        }
-
-        #info {
-            position: relative;
-            display: inline-block;
-            width: 100%;
-            height: 100%;
-            margin-left: 10px;
-            
-        }
-
-        #info span {
-            display: block;
-            width: 100%;
-            line-height: 18px;
-            font-size: 1.3rem;
-            font-weight: bold;
-            text-align: left;
-            text-indent: 10px;
-            color: rgba(0, 0, 0, 0.459);
-            
-        }
-
-        #info span#email {
-            display: block;
-            width: 100%;
-            margin-top: 0px;
-            font-size: 1rem;
-            font-weight: bold;
-            text-align: left;
-            text-indent: 10px;
-            color: rgb(32, 163, 250);
-            
-        }
-
-        #info ul {
-            display: flex;
-            width: 100%;
-            height: 100%;
-            margin-top: 8px;
-            border-top: 1px solid black;
-            justify-content: space-evenly;
-            padding: 3px 0px;
-
-        }
-
-        #info ul li {
-            list-style: none;
-            text-align: center;
-        }
-
-        #info ul li h2, h1 {
-            text-align: center;
-            font-size: 1em;
-        }
-
-        .infn {
-            color: rgba(0, 0, 0, 0.342);
-        }
-
-        .infv {
-            color: rgba(60, 161, 250, 0.534);
-            font-size: 1.1em;
-            font-weight: bolder;
-        }
-
-        #btn-cpost {
-            display: block;
-            width: 100%;
-            margin: 8px 0px auto auto;
-            max-width: 400px;
-            padding: 1%;
-            border-radius: 5px;
-            font-weight: bold;
-            font-size: .7rem;
-            text-align: center;
-            text-decoration: none;
-            color: white;
-            background: rgb(32, 163, 250);
-        }
-
-
-    </style>
+    
+    	#cab {
+    		box-shadow: 0px 1px 4px #00000085;
+    	}
+    
+	    #pf {
+	      width: 100%;
+	      height: 12vh;
+	      box-shadow: 0px 1px 4px #00000085;
+	    }
+	    
+	    #foto-name-edit {
+	      display: flexbox;
+	      width: 100%;
+	      padding-bottom: 2vh;
+	    }
+	    
+	    #foto-name-edit img {
+	      display: block;
+	      width: 12.5vh;
+	      height: 12.5vh;
+		  max-width: 400px;
+		  max-height: 400px;
+	      transform: translate(0%, -50%);
+	      margin: auto;
+	      border: .5vh solid white;
+	      border-radius: 50%;
+	      box-shadow: 0px 1px 4px #00000085;
+	    }
+	    
+	    #nome {
+	      position: relative;
+	      display: block;
+	      width: 60%;
+	      margin: -4vh auto 10px auto;
+	      height: max-content;
+	      font-size: .9rem;
+	      font-weight: bold;
+	      text-align: center;
+	      color: #00000086
+	    }
+	    
+	    #foto-name-edit a {
+	      position: relative;
+	      display: block;
+	      width: max-content;
+	      height: max-content;
+	      margin: 5px auto;
+	      padding: 3px 20px;
+	      text-decoration: none;
+	      color: #0AC1FB;
+	      text-align: center;
+	      font-size: .9rem;
+	      border: 1px solid #0AC1FB;
+	      border-radius: 3px;
+	      transition: .5s;
+	    }
+	    
+	    #foto-name-edit a:hover {
+	      background: #0AC1FB;
+	      color: white;
+	    }
+	    
+	    #info {
+	      width: 80%;
+	      left: 10%;
+	      justify-content: space-between;
+	      padding-top: 10px;
+	      margin: 20px auto 0 auto;
+	      font-size: 1em;
+	      color: #00000065;
+    	  text-align: center;
+ 	   }
+ 	   
+ 	   #info .sep {
+ 	     border-right: 1px solid #00000010;
+ 	   }
+ 	   
+ 	   #info th {
+ 	     font-weight: normal;
+ 	   }
+ 	   
+ 	   #info td {
+ 	     color: #0AC1FB90;
+ 	     font-weight: bolder;
+ 	   }
+    
+    
+  </style>
 {% endblock %}
 
 {% block body %}
 
 <div id="cab">
+    
+    <div style="background: black url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQY3guJ4qjDP7jDghL_R7rpNM8ERV98VwKVLw&usqp=CAU');" id="pf">
+      
+    </div>
+    
     <div id="foto-name-edit">
-        <img src="{{ foto_perfil }}" alt="">
-        <a href="{{ url_for('editar_perfil') }}">editar perfil</a>
+      <img src="{{ foto_perfil }}" alt="">
+      <p id="nome">{{ current_user.username }}</p>
+	  {% if not editor %}
+      	<a href="{{ url_for('editar_perfil') }}">editar perfil</a>
+	  
+      
+		<table id="info">
+			<thead>
+			<th class="sep">ID</th>
+			<th class="sep">Cursos</th>
+			<th>Post</th>
+			</thead>
+			<tbody>
+			<td class="sep">3747</td>
+			<td class="sep">0</td>
+			<td>5878</td>
+			</tbody>
+		</table>
+	  {% endif %}
     </div>
-    <div id="info">
-        <span id="nome">{{ current_user.username }}</span>
-        <span id="email">{{ current_user.email }}</span>
-        <ul>
-            <li>
-                <h2 class="infn">ID</h2>
-                <h1 class="infv">{{ current_user.id }}</h1>
-            </li>
-            <li>
-                <h2 class="infn">Cursos</h2>
-                <h1 class="infv">{{ current_user.cursos }}</h1>
-            </li>
-            <li>
-                <h2 class="infn">Posts</h2>
-                <h1 class="infv">0</h1>
-            </li>
-        </ul>
-        <a id="btn-cpost" href="#"> Criar Post</a>
-    </div>
-</div>
+  </div>
 
 {% block form_editarperfil %}
 
