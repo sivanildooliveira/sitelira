@@ -3,8 +3,10 @@ from fileinput import filename
 from flask import render_template, redirect, url_for, request, flash
 from comunidadeimpressionadora import app, database#, bcrypt
 from comunidadeimpressionadora.forms import FormCriarConta, FormLogin, FormEditarPerfil
+from comunidadeimpressionadora.functionss import salvar_imagem
 from comunidadeimpressionadora.models import Usuarios, Post
 from flask_login import login_user, logout_user, current_user, login_required
+from comunidadeimpressionadora import functionss
 
 @app.route('/')
 @login_required
@@ -82,6 +84,10 @@ def perfil():
 
 
 
+
+
+
+
 @app.route('/perfil/editar', methods=['GET', 'POST'])
 @login_required
 def editar_perfil():
@@ -90,7 +96,10 @@ def editar_perfil():
     if form.validate_on_submit():
         current_user.username = form.username.data
         current_user.email = form.email.data
-    	#current_user.foto_perfil = form.foto_perfil.data
+        if form.foto_perfil.data:
+            #nome_imagem = salvar_imagem(form.foto_perfil.data)
+            #current_user.foto_perfil = nome_imagem
+            pass
         database.session.commit()
         flash('Perfil Alterado com Sucesso!', 'alert-success')
         return redirect(url_for('perfil'))
