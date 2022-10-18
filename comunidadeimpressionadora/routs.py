@@ -97,9 +97,9 @@ def editar_perfil():
         current_user.username = form.username.data
         current_user.email = form.email.data
         if form.foto_perfil.data:
-            #nome_imagem = salvar_imagem(form.foto_perfil.data)
-            #current_user.foto_perfil = nome_imagem
-            pass
+            nome_imagem = salvar_imagem(form.foto_perfil.data)
+            current_user.foto_perfil = nome_imagem
+            
         database.session.commit()
         flash('Perfil Alterado com Sucesso!', 'alert-success')
         return redirect(url_for('perfil'))
