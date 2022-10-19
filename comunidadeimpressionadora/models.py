@@ -28,3 +28,4 @@ class Post(database.Model):
 
 with app.app_context():
     database.create_all()
+    #database.drop_all()

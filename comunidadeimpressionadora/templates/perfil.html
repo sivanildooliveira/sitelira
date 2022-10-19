@@ -2,9 +2,12 @@
 
 {% block head %}
     <style>
-    
+		
+
+
     	#cab {
     		box-shadow: 0px 1px 4px #00000085;
+			min-height: 30.5vh;
     	}
     
 	    #pf {
@@ -23,8 +26,6 @@
 	      display: block;
 	      width: 12.5vh;
 	      height: 12.5vh;
-		  max-width: 400px;
-		  max-height: 400px;
 	      transform: translate(0%, -50%);
 	      margin: auto;
 	      border: .5vh solid white;
@@ -41,7 +42,8 @@
 	      font-size: .9rem;
 	      font-weight: bold;
 	      text-align: center;
-	      color: #00000086
+	      color: #00000086;
+		  transition: .5s;
 	    }
 	    
 	    #foto-name-edit a {
@@ -88,6 +90,44 @@
  	     color: #0AC1FB90;
  	     font-weight: bolder;
  	   }
+
+	   @media (min-width: 720px) {
+
+		 
+		#foto-name-edit img {
+	      margin-left: 1vw;
+		  width: 20vh;
+		  height: 20vh;
+		  transform: translate(0%, -10%);
+	    }
+
+		#nome {
+	      display: flex;
+	      width: calc(100% - 25vh - 30%);
+		  top: -15vh;
+		  margin-left: 25vh;
+	      font-size: 2rem;
+	    }
+		
+
+		#foto-name-edit a {
+	      display: flex;
+	      margin: 5px auto;
+		  top: -16vh;
+		  margin-left: 25vh;
+		  
+	    }
+
+
+		#info {
+	      width: 40%;
+	      left: 10%;
+	      font-size: 1em;
+		  margin-top: -10vh;
+ 	   }
+
+
+	   }
     
     
   </style>

@@ -11,10 +11,10 @@ def salvar_imagem(imagen):
     nome_arquivo = nome + codigo + extencao
 
     #reduzir tamnho da imagem
-    tamanho = (200,200)
+    tamanho = (400,400)
     imagem_reduzida = Image.open(imagen)
     imagem_reduzida.thumbnail(tamanho)
-    
+
     #salvar imagem no banco
     caminho_completo = os.path.join(app.root_path, 'static/fotos_perfil', nome_arquivo)
     imagem_reduzida.save(caminho_completo)
