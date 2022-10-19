@@ -24,8 +24,8 @@
 	    
 	    #foto-name-edit img {
 	      display: block;
-	      width: 12.5vh;
-	      height: 12.5vh;
+	      width: 100px;
+	      height: 100px;
 	      transform: translate(0%, -50%);
 	      margin: auto;
 	      border: .5vh solid white;
@@ -37,7 +37,7 @@
 	      position: relative;
 	      display: block;
 	      width: 60%;
-	      margin: -4vh auto 10px auto;
+	      margin: -50px auto 10px auto;
 	      height: max-content;
 	      font-size: .9rem;
 	      font-weight: bold;
@@ -93,29 +93,28 @@
 
 	   @media (min-width: 720px) {
 
+
+		#foto-name-edit {
+	      display: block;
+	    }
+
 		 
 		#foto-name-edit img {
 	      margin-left: 1vw;
-		  width: 20vh;
-		  height: 20vh;
+		  width: 100px;
+		  height: 100px;
 		  transform: translate(0%, -10%);
 	    }
 
 		#nome {
-	      display: flex;
-	      width: calc(100% - 25vh - 30%);
-		  top: -15vh;
-		  margin-left: 25vh;
-	      font-size: 2rem;
+	      margin: -100px auto auto 120px;
+		  font-size: 1.5rem;
+		  text-align: left;
 	    }
 		
 
 		#foto-name-edit a {
-	      display: flex;
-	      margin: 5px auto;
-		  top: -16vh;
-		  margin-left: 25vh;
-		  
+	      margin: 5px auto auto 120px;
 	    }
 
 
@@ -123,7 +122,7 @@
 	      width: 40%;
 	      left: 10%;
 	      font-size: 1em;
-		  margin-top: -10vh;
+		  margin: -60px auto auto 60%;
  	   }
 
 
@@ -143,7 +142,7 @@
     
     <div id="foto-name-edit">
       <img src="{{ foto_perfil }}" alt="">
-      <p id="nome">{{ current_user.username }}</p>
+      <span id="nome">{{ current_user.username }}</span>
 	  {% if not editor %}
       	<a href="{{ url_for('editar_perfil') }}">editar perfil</a>
 	  
