@@ -44,6 +44,7 @@ def login():
                 return redirect(url_for('home'))       	 
         else:
             flash(f'Falha no login! E-mail ou Senha são Inválidos. Tente novamente.', 'alert-danger')
+            
 
 
     if form_criarconta.validate_on_submit() and 'botao_submit_criarconta' in request.form:
@@ -51,12 +52,12 @@ def login():
         #criar usuario
         senha_criptografada = form_criarconta.senha.data#bcrypt.generate_password_hash(form_criarconta.senha.data)
         print(senha_criptografada)
-        usuario = Usuarios(username=form_criarconta.username.data, email=form_criarconta.email.data, senha=senha_criptografada)
+        usuario = Usuarios(username=form_criarconta.username.data.title(), email=form_criarconta.email.data, senha=senha_criptografada)
         #adicionar usuario a sessao
         database.session.add(usuario)
         #comitar no banco de dados
         database.session.commit()
-        flash(f'Conta criada para o e-mail: {form_criarconta.email.data}', 'alert-success')
+        flash(f'Bem Vindo {form_criarconta.username.data}!', 'alert-success')
         usuario = Usuarios.query.filter_by(email=form_criarconta.email.data).first()
         login_user(usuario)
         if par_next:
