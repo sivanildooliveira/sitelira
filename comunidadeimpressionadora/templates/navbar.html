@@ -1,94 +1,174 @@
-
-
 <style>
-  nav{
-    position: absolute;
-    display: flex;
-    background-color: rgb(48, 48, 48);
-    
+
+  * {
+      padding: 0px;
+      margin: 0px;
+      
   }
 
-  a, .bi-list {
-    color: white;
-    
+  header {
+    background: rgb(48, 48, 48);
   }
 
-  .bi-list {
-    display: none;
-    font-size: 1.5rem;
-    margin-top: -5px;
-  }
-
-  .navbar-brand {
-    font-weight: bold;
-  }
-
-  .nav-link {
-    font-size: .95rem;
-  }
-
-  a:hover {
-    color: rgb(255, 255, 255);
-    text-shadow: 0px 0px 4px white;
-  }
-
-  @media (max-width: 991px) {
-    .nav-link {
-      text-indent: 20px;
-      border-top: .5px solid rgba(255, 255, 255, 0.144);
-    }
-
-    .bi-list {
+  
+  nav {
+      position: relative;
       display: block;
-    }
-
+      padding: 10px 0px 10px 0px;
+      transition: 1s;
+      
   }
+
+
+  nav  a, i, ul, li {
+      text-decoration: none;
+      color: white;
+      list-style: none;
+      padding: 0px;
+      margin: 0;
+  }
+
+
+  @media (max-width: 769.99px) {
+
+      nav li:hover {
+          background: rgba(255, 255, 255, 0.13);
+      }
+
+      nav a:hover {
+          color: currentColor;
+      }
+
+
+      #logo {
+          display: block;
+          padding: .5rem;
+          text-align: center;
+
+      }
+
+
+      #btn-menu {
+          display: block;
+          padding: .3rem 0;
+          margin-top: .3rem;
+          text-align: center;
+          font-size: 1.5rem;
+          background: rgba(255, 255, 255, 0.233);
+      }
+
+      #lmenu {
+          position: relative;
+          display: block;
+          width: 100%;
+          height: 0px;
+          visibility: hidden;
+          overflow-y: hidden;
+          transition: .5s;
+      }
+
+      #lmenu.active {
+          height: 50vh;
+          visibility: visible;
+          overflow-y: visible;
+      }
+
+
+      #lmenu ul li {
+          padding: 4%;
+          text-align: center;
+          border-bottom: 1px solid rgba(248, 248, 248, 0.144);
+      }
+  }
+
+
+  @media (min-width: 770px) {
+
+      nav {
+          display: flex;
+          align-items: center;
+          white-space: nowrap;
+      }
+
+      nav a:hover {
+          color: white;
+          font-weight: bold;
+          text-shadow: 0 0 4px white;
+      }
+
+      #logo {
+          font-weight: bolder;
+      }
+
+      nav i {
+          display: none;
+      }
+
+      #lmenu {
+          display: flex;
+          width: 100%;
+          padding: 0 5%;
+          justify-content: space-between;
+      }
+
+      #menu-links {
+          display: flex;
+          gap: 1rem;
+      }
+
+      #menu-login {
+          display: flex;
+          gap: 1rem;
+      }
+  }
+
+  
+
 
 </style>
 
+<header>
+  <nav class="container">
+      <a id="logo" href="{{ url_for('home') }}">COMUNIDADE IMPRESSIONADORA</a>
+      <i id="btn-menu" class="bi bi-list"></i>
+      <div id="lmenu">
+          <ul id="menu-links">
+              
+              <li><a href="{{ url_for('home') }}">Início</a></li>
+              <li><a href="{{ url_for('usuarios') }}">Usuários</a></li>
+              <li><a href="{{ url_for('contato') }}">Contatos</a></li>
 
-<nav class="navbar navbar-expand-lg">
-  <div class="container">
-    <a class="navbar-brand me-5" href="{{ url_for('home') }}">Comunidade Impressionadora</a>
-    
-      <span class="navbar-toggler-icon bi bi-list" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" ></span>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="{{ url_for('home') }}">Início</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('usuarios') }}">Usuários</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url_for('contato') }}">Contato</a>
-        </li>
-      </ul>
-      <ul class="d-flex navbar-nav">
-        {% if current_user.is_authenticated %}
-        	<li class="nav-item">
-	          <a class="nav-link" href="{{ url_for('criar_post') }}">Criar Post</a>
-	        </li>
-	        
-	        <li class="nav-item">
-	          <a class="nav-link" href="{{ url_for('perfil') }}">Meu Perfil</a>
-	        </li>
-	        
-	        <li class="nav-item">
-	          <a class="nav-link" href="{{ url_for('sair') }}">Sair</a>
-	        </li>
-        	
-        {% else %}
-        
-	        <li class="nav-item">
-	          <a class="nav-link" href="{{ url_for('login') }}">Login</a>
-	        </li>
-	        <li class="nav-item">
-	          <a class="nav-link" href="{{ url_for('login') }}">Criar Conta</a>
-	        </li>
-	    
-	    {% endif %}
-      </ul>
-    </div>
-  </div>
-</nav>
+          </ul>
+          <ul id="menu-login">
+              {% if current_user.is_authenticated %}
+
+                  <li><a href="{{ url_for('criar_post') }}">Criar Post</a></li>
+                  <li><a href="{{ url_for('perfil') }}">Meu Perfil</a></li>
+                  <li><a href="{{ url_for('sair') }}">Sair</a></li>
+
+              {% else %}
+
+                  <li><a href="{{ url_for('login') }}">Login</a></li>
+                  <li><a href="{{ url_for('login') }}">Criar Conta</a></li>
+
+              {% endif %}
+          </ul>
+      </div>
+  </nav>
+</header>
+
+
+<script>
+
+  const btn_menu = document.getElementById('btn-menu')
+
+  function abrirMenu(event) {
+      event.preventDefault();
+
+      const lmenu = document.getElementById('lmenu')
+
+      lmenu.classList.toggle('active')
+  }
+
+  btn_menu.addEventListener('click', abrirMenu)
+</script>

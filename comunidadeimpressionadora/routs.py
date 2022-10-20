@@ -35,7 +35,7 @@ def login():
         usuario = Usuarios.query.filter_by(email=form_login.lemail.data).first()     
         if usuario and  form_login.lsenha.data == usuario.senha:#bcrypt.check_password_hash(usuario.senha, form_login.lsenha.data):
             login_user(usuario, remember=form_login.lembrar_dados.data)        
-            flash(f'Login feito com sucesso no e-mail: {form_login.lemail.data}', 'alert-success')        
+            flash(f'Você esta logado!', 'alert-success')        
             par_next = request.args.get('next')
             print(par_next)
             if par_next:
@@ -43,7 +43,7 @@ def login():
             else:
                 return redirect(url_for('home'))       	 
         else:
-            flash(f'Falha no login! E-mail ou senha não confere. Tente novamente.', 'alert-danger')
+            flash(f'Falha no login! E-mail ou Senha são Inválidos. Tente novamente.', 'alert-danger')
 
 
     if form_criarconta.validate_on_submit() and 'botao_submit_criarconta' in request.form:
@@ -70,7 +70,7 @@ def login():
 @app.route('/sair')
 def sair():
 	logout_user()
-	flash('Logout feito com sucesso', 'alert-warning')
+	flash('Você não esta Logado!', 'alert-warning')
 	return redirect(url_for('home'))
 
 

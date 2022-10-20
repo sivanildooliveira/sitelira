@@ -17,8 +17,8 @@ database.init_app(app)
 #bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'login'
-login_manager.login_message = '--- Faça login para Continar.'
-login_manager.login_message_category = 'alert-info'
+login_manager.login_message = 'Faça login para Continar.'
+login_manager.login_message_category = 'alert-danger'
 
 
 from comunidadeimpressionadora import routs

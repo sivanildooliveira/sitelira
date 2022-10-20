@@ -25,7 +25,7 @@
         {% with mensagens = get_flashed_messages(with_categories=True) %}
             {% if mensagens %}
                 {% for categoria, mensagem in mensagens %}
-                    <div class="alert {{ categoria }}">
+                    <div style="text-align: center; padding: 5px;" class=" mt-3 {{ categoria }}">
                         {{ mensagem }}
                     </div>
                 {% endfor %}
