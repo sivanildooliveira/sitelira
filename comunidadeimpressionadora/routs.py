@@ -57,9 +57,12 @@ def login():
         database.session.add(usuario)
         #comitar no banco de dados
         database.session.commit()
-        flash(f'Bem Vindo {form_criarconta.username.data}!', 'alert-success')
+        
         usuario = Usuarios.query.filter_by(email=form_criarconta.email.data).first()
         login_user(usuario)
+
+        flash(f'Bem Vindo {current_user.username}!', 'alert-success')
+
         if par_next:
             return redirect(par_next)
         else:
