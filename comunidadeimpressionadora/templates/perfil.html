@@ -91,7 +91,7 @@
  	     font-weight: bolder;
  	   }
 
-	   @media (min-width: 720px) {
+	   @media (min-width: 800px) {
 
 
 		#foto-name-edit {
@@ -119,10 +119,10 @@
 
 
 		#info {
-	      width: 40%;
+	      width: 60%;
 	      left: 10%;
 	      font-size: 1em;
-		  margin: -60px auto auto 60%;
+		  margin: -40px auto auto 40%;
  	   }
 
 
@@ -154,9 +154,9 @@
 			<th>Post</th>
 			</thead>
 			<tbody>
-			<td class="sep">3747</td>
-			<td class="sep">0</td>
-			<td>5878</td>
+			<td class="sep">{{ current_user.id }}</td>
+			<td class="sep">{{ current_user.cursos }}</td>
+			<td>{{ current_user.posts }}</td>
 			</tbody>
 		</table>
 	  {% endif %}
