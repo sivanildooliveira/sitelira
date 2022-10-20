@@ -95,7 +95,7 @@ def editar_perfil():
     editor = True
     form = FormEditarPerfil()
     if form.validate_on_submit():
-        current_user.username = form.username.data
+        current_user.username = form.username.data.title()
         current_user.email = form.email.data
         if form.foto_perfil.data:
             nome_imagem = salvar_imagem(form.foto_perfil.data)
