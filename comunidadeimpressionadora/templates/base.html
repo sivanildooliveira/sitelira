@@ -25,7 +25,7 @@
         {% with mensagens = get_flashed_messages(with_categories=True) %}
             {% if mensagens %}
                 {% for categoria, mensagem in mensagens %}
-                    <div style="text-align: center; padding: 5px;" class=" mt-3 {{ categoria }}">
+                    <div style="text-align: center; padding: 5px; margin-bottom: 3px;" class=" mt-1 {{ categoria }}">
                         {{ mensagem }}
                     </div>
                 {% endfor %}
