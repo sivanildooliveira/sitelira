@@ -1,21 +1,31 @@
 <style>
 
+  :root {
+    --bg-header: #0AC1FB;
+  }
+
   * {
       padding: 0px;
       margin: 0px;
-      
   }
 
   header {
-    background: rgb(48, 48, 48);
+    position: fixed;
+    height: 50px;
+    width: 100%;
+ 
+    z-index: 9999999;
+    background: var(--bg-header);
   }
 
   
   nav {
       position: relative;
       display: block;
-      padding: 10px 0px 10px 0px;
+      padding: 10px 5% 10px 5%;
       transition: 1s;
+      background: var(--bg-header);
+      z-index: 99999;
       
   }
 
@@ -31,6 +41,13 @@
 
   @media (max-width: 769.99px) {
 
+      header {
+        position: fixed;
+        min-height: 12vh;
+        background: var(--bg-header);
+        
+      }
+
       nav li:hover {
           background: rgba(255, 255, 255, 0.13);
       }
@@ -44,7 +61,12 @@
           display: block;
           padding: .5rem;
           text-align: center;
+      }
 
+      #logo:hover {
+          color: white;
+          font-weight: bold;
+          text-shadow: 0 0 4px white;
       }
 
 
@@ -55,7 +77,10 @@
           text-align: center;
           font-size: 1.5rem;
           background: rgba(255, 255, 255, 0.233);
+          transition: 1s;
       }
+
+
 
       #lmenu {
           position: relative;
@@ -65,12 +90,17 @@
           visibility: hidden;
           overflow-y: hidden;
           transition: .5s;
+          z-index: 999999;
       }
 
       #lmenu.active {
           height: 50vh;
           visibility: visible;
-          overflow-y: visible;
+          overflow-y: auto;
+      }
+
+      #lmenu.active::-webkit-scrollbar { 
+          display: none;
       }
 
 
@@ -79,10 +109,16 @@
           text-align: center;
           border-bottom: 1px solid rgba(248, 248, 248, 0.144);
       }
+
+      .body {
+          padding-top: 12.5vh;
+      }
   }
 
 
   @media (min-width: 770px) {
+
+      
 
       nav {
           display: flex;
@@ -122,6 +158,11 @@
           display: flex;
           gap: 1rem;
       }
+
+      .body {
+        padding-top: 50px;
+      }
+      
   }
 
   
@@ -130,7 +171,7 @@
 </style>
 
 <header>
-  <nav class="container">
+  <nav class="">
       <a id="logo" href="{{ url_for('home') }}">COMUNIDADE IMPRESSIONADORA</a>
       <i id="btn-menu" class="bi bi-list"></i>
       <div id="lmenu">
@@ -170,6 +211,8 @@
       const lmenu = document.getElementById('lmenu')
 
       lmenu.classList.toggle('active')
+      btn_menu.classList.toggle('bi-list')
+      btn_menu.classList.toggle('bi-x-lg')
   }
 
   btn_menu.addEventListener('click', abrirMenu)
