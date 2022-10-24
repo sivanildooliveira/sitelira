@@ -7,7 +7,7 @@
         height: max-content;
         padding: 1%;
         background: rgb(25, 158, 69);
-        z-index: 999;
+        z-index: 9999;
     }
 
     header a, span {
@@ -28,7 +28,7 @@
 
     #logo {
         font-weight: bolder;
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 
     #btn-menu {
@@ -42,6 +42,11 @@
         color: white;
         background: transparent;
         outline: none;
+    }
+
+    #btn-menu.active {
+        border: 1px solid white;
+        border-radius: 10px;
     }
 
     #hamburger {
@@ -77,13 +82,17 @@
         
     }
 
+    .body {
+        margin-top: calc(65px + 2%);
+    }
+
     @media (max-width: 719.9px) {
         header {
             height: max-content;
         }
 
         #tit-btn-menu {
-            height: 50px;
+            height: 65px;
         }
 
         #nav {
@@ -101,12 +110,14 @@
         }
 
         
+        #menu-links, #menu-login {
+            padding-left: 0px;
+        }
 
 
         #lmenu li {
             display: block;
-            
-            text-indent: 5%;
+            text-align: center;
             list-style: none;
             border-bottom: 1px solid rgba(255, 255, 255, 0.349);
         }
@@ -122,9 +133,46 @@
 
 
 
-        .body {
-            margin-top: calc(50px + 2%);
+        
+    }
+
+    @media (min-width: 720px) {
+        header, #nav, #lmenu, #menu-links, #menu-login {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
         }
+
+        #btn-menu {
+            display: none;
+        }
+
+        #lmenu {
+            height: 65px;
+            width: 100%;
+        }
+
+        #lmenu li {
+            display: block;
+            text-align: center;
+            list-style: none;
+        }
+
+        #menu-links, #menu-login {
+            gap: 1rem;
+            margin-bottom: 0px;
+        }
+        
+        li a {
+            transition: .3s;
+        }
+
+        li a:hover {
+            border-bottom: 1px solid white;
+        }
+
+       
+
     }
 
 
@@ -134,12 +182,14 @@
 <header>
 
     <div id="tit-btn-menu">
+        
+        <a id="logo" href="{{ url_for('home') }}">COMUNIDADE IMPRESSIONADORA</a>
+
         <button id="btn-menu">
             MENU
             <span id="hamburger"></span>
         </button>
 
-        <a id="logo" href="{{ url_for('home') }}">COMUNIDADE IMPRESSIONADORA</a>
     </div>
 
     <nav id="nav">
