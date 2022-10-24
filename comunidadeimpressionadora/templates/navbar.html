@@ -1,12 +1,21 @@
 
 <style>
+
+	:root {
+		--cor1: rgb(25, 158, 69);
+		--cor2: rgb(12, 75, 33);
+	}
+
+
+
+
     header {
         position: fixed;
         top: 0px;
         width: 100%;
         height: max-content;
         padding: 1%;
-        background-image: linear-gradient(to top, rgb(25, 158, 69), rgb(12, 75, 33)) ;
+        background-image: linear-gradient(to top, var(--cor1), var(--cor2)) ;
         z-index: 9999;
     }
 
@@ -60,6 +69,7 @@
 
     #btn-menu.active #hamburger {
         border-top-color: transparent;
+        transform: rotate(270deg);
     }
 
     #hamburger::after, #hamburger::before {
