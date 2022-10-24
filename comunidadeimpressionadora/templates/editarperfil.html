@@ -92,7 +92,7 @@
                     {% for campo in form %}
                         {% if "curso_" in campo.name %}
                             <div class="form-group mb-1 check-cursos">
-                                {{ campo(class="form-check-input") }}
+                                {{ campo(class="form-check-input", checked=True if campo.label.text in current_user.cursos else False) }}
                                 {{ campo.label(class="form-check-label") }}
                             </div>
                         {% endif %}
