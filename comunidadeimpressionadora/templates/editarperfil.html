@@ -2,7 +2,20 @@
 {% extends 'perfil.html' %}
 
 
+
+
+
 {% block form_editarperfil %}
+
+
+<style>
+
+    .check-cursos {
+        padding-left: 10px;
+    }
+
+</style>
+
 
 <div class="container">
 
@@ -70,6 +83,21 @@
                             {% endfor %}
                         {% endif %}
                     </div>
+
+                    <br>
+                    <p>Cursos Inscritos</p>
+
+                    
+
+                    {% for campo in form %}
+                        {% if "curso_" in campo.name %}
+                            <div class="form-group mb-1 check-cursos">
+                                {{ campo(class="form-check-input") }}
+                                {{ campo.label(class="form-check-label") }}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                    
 
                     
                     

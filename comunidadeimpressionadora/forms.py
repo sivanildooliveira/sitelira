@@ -37,6 +37,14 @@ class FormEditarPerfil(FlaskForm):
     foto_perfil = FileField('Foto de Perfil', validators=[FileAllowed(['jpg', 'png', 'webp'])])
     bg_perfil_img = FileField('Background do Perfil', validators=[FileAllowed(['jpg', 'png', 'webp'])])
     bg_perfil_url = StringField('Background do Perfil URL')
+
+    curso_excel = lembrar_dados = BooleanField('Execel Impressionador', default=False)
+    curso_powerbi = lembrar_dados = BooleanField('PowerBi Impressionador', default=False)
+    curso_python = lembrar_dados = BooleanField('Python Impressionador', default=False)
+    curso_vba = lembrar_dados = BooleanField('VBA Impressionador', default=False)
+    curso_ppt = lembrar_dados = BooleanField('Apresentações Impressionador', default=False)
+    curso_sql = lembrar_dados = BooleanField('SQL Impressionador', default=False)
+
     botao_submit_editarperfil = SubmitField('Salvar')
     
     
