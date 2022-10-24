@@ -1,208 +1,170 @@
+
 <style>
-
-  :root {
-    --bg-header: #0AC1FB;
-  }
-
-  * {
-      padding: 0px;
-      margin: 0px;
-  }
-
-  header {
-    position: fixed;
-    height: 50px;
-    width: 100%;
- 
-    z-index: 9999999;
-    background: var(--bg-header);
-  }
-
-  
-  nav {
-      position: relative;
-      display: block;
-      padding: 10px 5% 10px 5%;
-      transition: 1s;
-      background: var(--bg-header);
-      z-index: 99999;
-      
-  }
-
-
-  nav  a, i, ul, li {
-      text-decoration: none;
-      color: white;
-      list-style: none;
-      padding: 0px;
-      margin: 0;
-  }
-
-  li a {
-    display: block;
-    height: 100%;
-  }
-
-
-  @media (max-width: 769.99px) {
-
-      header {
+    header {
         position: fixed;
-        min-height: 12vh;
-        background: var(--bg-header);
+        top: 0px;
+        width: 100%;
+        height: max-content;
+        padding: 1%;
+        background: rgb(25, 158, 69);
+        z-index: 999;
+    }
+
+    header a, span {
+        color: white;
+        text-decoration: none;
+    }
+
+    header a:hover {
+        color: white;
+        text-shadow: 0 0 3px white;
+    }
+
+    #tit-btn-menu {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+
+    #logo {
+        font-weight: bolder;
+        font-size: 1.2rem;
+    }
+
+    #btn-menu {
+        display: flex;
+        padding: .5rem 1rem;
+        border: none;
+        font-size: 1rem;
+        cursor: pointer;
+        gap: 1rem;
+        align-items: center;
+        color: white;
+        background: transparent;
+        outline: none;
+    }
+
+    #hamburger {
+        display: block;
+        width: 20px;
+        border-top: 2px solid;
+        color: white;
+        transition: .3s;
+    }
+
+    #btn-menu.active #hamburger {
+        border-top-color: transparent;
+    }
+
+    #hamburger::after, #hamburger::before {
+        content: '';
+        position: relative;
+        display: block;
+        width: 20px;
+        height: 2px;
+        margin-top: 5px;
+        background: currentColor;
+        transition: .3s;
+    }
+
+    #btn-menu.active #hamburger::after {
+        transform: rotate(135deg);
+        top: -7px;
+    }
+
+    #btn-menu.active #hamburger::before {
+        transform: rotate(-135deg);
         
-      }
+    }
 
-      nav li:hover {
-          background: rgba(255, 255, 255, 0.13);
-      }
+    @media (max-width: 719.9px) {
+        header {
+            height: max-content;
+        }
 
-      nav a:hover {
-          color: currentColor;
-      }
+        #tit-btn-menu {
+            height: 50px;
+        }
 
+        #nav {
+            height: 0px;
+            border-top: 2px solid rgba(255, 255, 255, 0.349);
+            visibility: hidden;
+            overflow-y: hidden;
+            transition: .3s;
+        }
 
-      #logo {
-          display: block;
-          padding: .5rem;
-          text-align: center;
-      }
+        #nav.active {
+            height: 50vh;
+            visibility: visible;
+            overflow-y: auto;
+        }
 
-      #logo:hover {
-          color: white;
-          font-weight: bold;
-          text-shadow: 0 0 4px white;
-      }
-
-
-      #btn-menu {
-          display: block;
-          padding: .3rem 0;
-          margin-top: .3rem;
-          text-align: center;
-          font-size: 1.5rem;
-          background: rgba(255, 255, 255, 0.233);
-          transition: 1s;
-      }
+        
 
 
+        #lmenu li {
+            display: block;
+            
+            text-indent: 5%;
+            list-style: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.349);
+        }
 
-      #lmenu {
-          position: relative;
-          display: block;
-          width: 100%;
-          height: 0px;
-          visibility: hidden;
-          overflow-y: hidden;
-          transition: .5s;
-          z-index: 999999;
-      }
+        li a {
+            display: block;
+            padding: 20px 0px;
+        }
 
-      #lmenu.active {
-          height: 50vh;
-          visibility: visible;
-          overflow-y: auto;
-      }
-
-      #lmenu.active::-webkit-scrollbar { 
-          display: none;
-      }
+        li a:hover {
+            background-color: rgba(255, 255, 255, 0.055);
+        }
 
 
-      #lmenu ul li {
-          padding: 4%;
-          text-align: center;
-          border-bottom: 1px solid rgba(248, 248, 248, 0.144);
-      }
 
-      .body {
-          padding-top: 12.5vh;
-      }
-  }
+        .body {
+            margin-top: calc(50px + 2%);
+        }
+    }
 
-
-  @media (min-width: 770px) {
-
-      
-
-      nav {
-          display: flex;
-          align-items: center;
-          white-space: nowrap;
-      }
-
-      nav a:hover {
-          color: white;
-          font-weight: bold;
-          text-shadow: 0 0 4px white;
-      }
-
-      #logo {
-          font-weight: bolder;
-      }
-
-      nav i {
-          display: none;
-      }
-
-      #lmenu {
-          display: flex;
-          font-size: .9rem;
-          width: 100%;
-          padding: 0 3%;
-          justify-content: space-between;
-      }
-
-      #menu-links {
-          display: flex;
-          gap: 1rem;
-          
-      }
-
-      #menu-login {
-          display: flex;
-          gap: 1rem;
-      }
-
-      .body {
-        padding-top: 50px;
-      }
-      
-  }
-
-  
 
 
 </style>
 
 <header>
-  <nav class="">
-      <a id="logo" href="{{ url_for('home') }}">COMUNIDADE IMPRESSIONADORA</a>
-      <i id="btn-menu" class="bi bi-list"></i>
-      <div id="lmenu">
-          <ul id="menu-links">
-              
-              <li><a href="{{ url_for('home') }}">Início</a></li>
-              <li><a href="{{ url_for('usuarios') }}">Usuários</a></li>
-              <li><a href="{{ url_for('contato') }}">Contatos</a></li>
 
-          </ul>
-          <ul id="menu-login">
-              {% if current_user.is_authenticated %}
+    <div id="tit-btn-menu">
+        <button id="btn-menu">
+            MENU
+            <span id="hamburger"></span>
+        </button>
 
-                  <li><a href="{{ url_for('criar_post') }}">Criar Post</a></li>
-                  <li><a href="{{ url_for('perfil') }}">Meu Perfil</a></li>
-                  <li><a href="{{ url_for('sair') }}">Sair</a></li>
+        <a id="logo" href="{{ url_for('home') }}">COMUNIDADE IMPRESSIONADORA</a>
+    </div>
 
-              {% else %}
+    <nav id="nav">
+        <div id="lmenu">
+            <ul id="menu-links">
+                <li><a href="{{ url_for('home') }}">Início</a></li>
+                <li><a href="{{ url_for('usuarios') }}">Usuários</a></li>
+                <li><a href="{{ url_for('contato') }}">Contatos</a></li>
+            </ul>
+            <ul id="menu-login">
+                {% if current_user.is_authenticated %}
 
-                  <li><a href="{{ url_for('login') }}">Login</a></li>
-                  <li><a href="{{ url_for('login') }}">Criar Conta</a></li>
+                    <li><a href="{{ url_for('criar_post') }}">Criar Post</a></li>
+                    <li><a href="{{ url_for('perfil') }}">Meu Perfil</a></li>
+                    <li><a href="{{ url_for('sair') }}">Sair</a></li>
 
-              {% endif %}
-          </ul>
-      </div>
-  </nav>
+                {% else %}
+
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                    <li><a href="{{ url_for('login') }}">Criar Conta</a></li>
+
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
 </header>
 
 
@@ -211,13 +173,11 @@
   const btn_menu = document.getElementById('btn-menu')
 
   function abrirMenu(event) {
-      event.preventDefault();
+    const nav = document.getElementById('nav')
 
-      const lmenu = document.getElementById('lmenu')
+    btn_menu.classList.toggle('active')
+    nav.classList.toggle('active')
 
-      lmenu.classList.toggle('active')
-      btn_menu.classList.toggle('bi-list')
-      btn_menu.classList.toggle('bi-x-lg')
   }
 
   btn_menu.addEventListener('click', abrirMenu)
