@@ -120,7 +120,8 @@ def editar_perfil():
     form.username.data = current_user.username
     form.email.data = current_user.email
     foto_perfil = url_for('static', filename=f'fotos_perfil/{current_user.foto_perfil}')
-    return render_template('editarperfil.html', form=form,  foto_perfil=foto_perfil, editor=editor)
+    bg_perfil = url_for('static', filename=f'bg_perfil/{current_user.bg_perfil}') if  'https://' not in current_user.bg_perfil else current_user.bg_perfil
+    return render_template('editarperfil.html', form=form,  foto_perfil=foto_perfil, bg_perfil=bg_perfil, editor=editor)
 
 
 
