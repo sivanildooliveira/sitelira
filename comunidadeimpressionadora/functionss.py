@@ -20,3 +20,17 @@ def salvar_imagem(imagen):
     imagem_reduzida.save(caminho_completo)
 
     return nome_arquivo
+
+
+def salvar_bg_imagem(imagem):
+
+    #adicionar codigo aleatorio
+    codigo = secrets.token_hex(8)
+    nome, extencao = os.path.splitext(imagem.filename)
+    nome_arquivo = nome + codigo + extencao
+
+    #salvar imagem no banco
+    caminho_completo = os.path.join(app.root_path, 'static/bg_perfil', nome_arquivo)
+    imagem.save(caminho_completo)
+
+    return nome_arquivo

@@ -6,7 +6,7 @@ from comunidadeimpressionadora.forms import FormCriarConta, FormLogin, FormEdita
 from comunidadeimpressionadora.functionss import salvar_imagem
 from comunidadeimpressionadora.models import Usuarios, Post
 from flask_login import login_user, logout_user, current_user, login_required
-from comunidadeimpressionadora import functionss
+from comunidadeimpressionadora.functionss import salvar_imagem, salvar_bg_imagem
 
 @app.route('/')
 @login_required
@@ -101,9 +101,18 @@ def editar_perfil():
     if form.validate_on_submit():
         current_user.username = form.username.data.title()
         current_user.email = form.email.data
+
         if form.foto_perfil.data:
             nome_imagem = salvar_imagem(form.foto_perfil.data)
             current_user.foto_perfil = nome_imagem
+        
+        if form.bg_perfil_url.data:
+            nome_imagem = form.bg_perfil_url.data
+            current_user.bg_perfil = nome_imagem
+                
+        if form.bg_perfil_img.data:
+            nome_imagem = salvar_bg_imagem(form.bg_perfil_img.data)
+            current_user.bg_perfil = nome_imagem
             
         database.session.commit()
         flash('Perfil Alterado com Sucesso!', 'alert-success')
