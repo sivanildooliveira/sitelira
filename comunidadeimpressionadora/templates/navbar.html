@@ -6,7 +6,7 @@
         width: 100%;
         height: max-content;
         padding: 1%;
-        background: rgb(25, 158, 69);
+        background-image: linear-gradient(to top, rgb(25, 158, 69), rgb(12, 75, 33)) ;
         z-index: 9999;
     }
 
@@ -36,6 +36,8 @@
         padding: .5rem 1rem;
         border: none;
         font-size: 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.514);
+        border-radius: 10px;
         cursor: pointer;
         gap: 1rem;
         align-items: center;
@@ -45,8 +47,7 @@
     }
 
     #btn-menu.active {
-        border: 1px solid white;
-        border-radius: 10px;
+        background: rgb(25, 158, 69);
     }
 
     #hamburger {
@@ -104,9 +105,13 @@
         }
 
         #nav.active {
-            height: 50vh;
+            height: 28rem;
             visibility: visible;
             overflow-y: auto;
+        }
+
+        #nav.active::-webkit-scrollbar {
+            display: none;
         }
 
         
@@ -128,7 +133,7 @@
         }
 
         li a:hover {
-            background-color: rgba(255, 255, 255, 0.055);
+            background-color: rgba(0, 0, 0, 0.301);
         }
 
 
@@ -171,6 +176,18 @@
             border-bottom: 1px solid white;
         }
 
+
+        .sair {
+            background-color: rgb(248, 165, 11);
+            padding: .2rem .8rem;
+            border-radius: 5px;
+        }
+
+        .sair:hover {
+            background-color: rgb(248, 118, 11);
+            border-bottom: none;
+        }
+
        
 
     }
@@ -204,7 +221,7 @@
 
                     <li><a href="{{ url_for('criar_post') }}">Criar Post</a></li>
                     <li><a href="{{ url_for('perfil') }}">Meu Perfil</a></li>
-                    <li><a href="{{ url_for('sair') }}">Sair</a></li>
+                    <li><a class="sair" href="{{ url_for('sair') }}">Sair</a></li>
 
                 {% else %}
 
