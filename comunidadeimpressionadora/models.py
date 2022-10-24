@@ -13,6 +13,7 @@ class Usuarios(database.Model, UserMixin):
     email = database.Column(database.String, nullable=False, unique=True)
     senha = database.Column(database.String, nullable=False)
     foto_perfil = database.Column(database.String, default='default.jpg')
+    bg_perfil = database.Column(database.String, default='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQY3guJ4qjDP7jDghL_R7rpNM8ERV98VwKVLw&usqp=CAU')
     posts = database.relationship('Post', backref='autor', lazy=True)
     cursos = database.Column(database.String, nullable=False, default='não informado')
 
@@ -28,7 +29,7 @@ class Post(database.Model):
 
 with app.app_context():
 
-    database.create_all()
     #database.drop_all()
+    database.create_all()
 
     pass

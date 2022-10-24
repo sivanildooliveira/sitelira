@@ -84,7 +84,8 @@ def sair():
 def perfil():
     editor = False
     foto_perfil = url_for('static', filename=f'fotos_perfil/{current_user.foto_perfil}')
-    return render_template('perfil.html', foto_perfil=foto_perfil, editor=editor)
+    bg_perfil = url_for('static', filename=f'bg_perfil/{current_user.bg_perfil}') if  'https://' not in current_user.bg_perfil else current_user.bg_perfil
+    return render_template('perfil.html', foto_perfil=foto_perfil, bg_perfil=bg_perfil, editor=editor)
 
 
 
