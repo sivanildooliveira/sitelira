@@ -6,7 +6,7 @@ from comunidadeimpressionadora.forms import FormCriarConta, FormLogin, FormEdita
 from comunidadeimpressionadora.functionss import salvar_imagem
 from comunidadeimpressionadora.models import Usuarios, Post
 from flask_login import login_user, logout_user, current_user, login_required
-from comunidadeimpressionadora.functionss import salvar_imagem, salvar_bg_imagem
+from comunidadeimpressionadora.functionss import salvar_imagem, salvar_bg_imagem, atualizar_cursos
 
 @app.route('/')
 @login_required
@@ -85,7 +85,13 @@ def perfil():
     editor = False
     foto_perfil = url_for('static', filename=f'fotos_perfil/{current_user.foto_perfil}')
     bg_perfil = url_for('static', filename=f'bg_perfil/{current_user.bg_perfil}') if  'https://' not in current_user.bg_perfil else current_user.bg_perfil
-    return render_template('perfil.html', foto_perfil=foto_perfil, bg_perfil=bg_perfil, editor=editor)
+    print(current_user.cursos)
+    n_cursos = 0
+    for c in current_user.cursos.split(";"):
+        n_cursos += 1
+    
+    print(n_cursos)
+    return render_template('perfil.html', foto_perfil=foto_perfil, bg_perfil=bg_perfil, n_cursos=n_cursos, editor=editor)
 
 
 
@@ -113,17 +119,20 @@ def editar_perfil():
         if form.bg_perfil_img.data:
             nome_imagem = salvar_bg_imagem(form.bg_perfil_img.data)
             current_user.bg_perfil = nome_imagem
+
+        
+        current_user.cursos = atualizar_cursos(form)
             
         database.session.commit()
         flash('Perfil Alterado com Sucesso!', 'alert-success')
         return redirect(url_for('perfil'))
+
     form.username.data = current_user.username
     form.email.data = current_user.email
     foto_perfil = url_for('static', filename=f'fotos_perfil/{current_user.foto_perfil}')
     bg_perfil = url_for('static', filename=f'bg_perfil/{current_user.bg_perfil}') if  'https://' not in current_user.bg_perfil else current_user.bg_perfil
+
     return render_template('editarperfil.html', form=form,  foto_perfil=foto_perfil, bg_perfil=bg_perfil, editor=editor)
-
-
 
 
 @app.route('/post/criar', methods=['GET', 'POST'])

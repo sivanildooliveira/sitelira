@@ -17,7 +17,7 @@
 	    }
 	    
 	    #foto-name-edit {
-	      display: flexbox;
+	      display: block;
 	      width: 100%;
 	      padding-bottom: 2vh;
 	    }
@@ -69,7 +69,7 @@
 	    
 	    #info {
 	      width: 80%;
-	      left: 10%;
+
 	      justify-content: space-between;
 	      padding-top: 10px;
 	      margin: 20px auto 0 auto;
@@ -90,6 +90,41 @@
  	     color: #0AC1FB90;
  	     font-weight: bolder;
  	   }
+	   
+	   #btn-cursos {
+		 width: 60%;
+		 color: #0AC1FB90;
+ 	     font-weight: bolder;
+		 border: 1px solid currentColor;
+		 border-radius: 5px;
+		 outline: none;
+		 background: transparent;
+	   }
+
+	   #list-cursos {
+		display: block;
+		height: 0px;
+		visibility: hidden;
+		overflow-y: hidden;
+		list-style: none;
+		padding-left: 0;
+		transition: .3s;
+	   }
+
+	   #list-cursos.active {
+		height: 100px;
+		visibility: visible;
+		overflow-y: auto;
+	   }
+	   
+
+	   #list-cursos li span {
+		display: block;
+		padding: 2px;
+		margin-bottom: 1px;
+		color: rgba(2, 92, 22, 0.479);
+		background: rgba(35, 121, 35, 0.13);
+	   }
 
 	   @media (min-width: 800px) {
 
@@ -155,13 +190,31 @@
 			</thead>
 			<tbody>
 			<td class="sep">{{ current_user.id }}</td>
-			<td class="sep">{{ current_user.cursos }}</td>
+			<td class="sep"><button id="btn-cursos">{{ n_cursos }}</button></td>
 			<td>{{ current_user.posts }}</td>
 			</tbody>
 		</table>
+		<ul id="list-cursos" class="mt-2">
+			{% for curso in current_user.cursos.split(";") %}
+				<li class="container"><span>{{ curso }}</span></li>
+			{% endfor %}
+		</ul>
 	  {% endif %}
     </div>
   </div>
+
+
+  <script>
+	btn_cursos = document.getElementById('btn-cursos')
+
+	function abrirCursos() {
+		lista = document.getElementById('list-cursos')
+		lista.classList.toggle('active')
+	}
+
+	btn_cursos.addEventListener('click', abrirCursos)
+
+  </script>
 
 
 {% block form_editarperfil %}

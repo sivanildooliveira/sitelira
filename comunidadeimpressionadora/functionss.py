@@ -34,3 +34,15 @@ def salvar_bg_imagem(imagem):
     imagem.save(caminho_completo)
 
     return nome_arquivo
+
+
+def atualizar_cursos(form):
+    lista_curso = []
+    for campo in form:
+        if "curso_" in campo.name:
+            if campo.data:
+                lista_curso.append(campo.label.text)
+    retorno_lista = ""
+    for curso in lista_curso:
+        retorno_lista += f'{curso};'
+    return retorno_lista[:-1]
