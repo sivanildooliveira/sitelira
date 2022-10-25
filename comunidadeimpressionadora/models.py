@@ -13,7 +13,7 @@ class Usuarios(database.Model, UserMixin):
     email = database.Column(database.String, nullable=False, unique=True)
     senha = database.Column(database.String, nullable=False)
     foto_perfil = database.Column(database.String, default='default.jpg')
-    bg_perfil = database.Column(database.String, default='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQY3guJ4qjDP7jDghL_R7rpNM8ERV98VwKVLw&usqp=CAU')
+    bg_perfil = database.Column(database.String, default='e186eb6deeae0c65db343938923d8f790099ecff3afe3c5f.jpg')
     posts = database.relationship('Post', backref='autor', lazy=True)
     cursos = database.Column(database.String, nullable=False, default='não informado')
 
