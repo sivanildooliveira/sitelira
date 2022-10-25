@@ -57,8 +57,8 @@
                     </div>
                     
                     <div class="form-group">
-                    	{{ form.foto_perfil.label(class="form-control-label") }}
-                        {{ form.foto_perfil(class="form-control-file mt-3") }}
+                    	{{ form.foto_perfil.label(class="form-control-label mt-1") }}
+                        {{ form.foto_perfil(class="form-control-file") }}
                         {% if form.foto_perfil.errors %}
                             {% for erro in form.foto_perfil.errors %}
 
@@ -72,7 +72,7 @@
 
                     <div class="form-group">
                     	{{ form.bg_perfil_url.label(class="form-control-label") }}
-                        {{ form.bg_perfil_url(class="form-control-file mt-3") }}
+                        {{ form.bg_perfil_url(class="form-control-file mt-2") }}
 
                         {{ form.bg_perfil_img(class="form-control-file mt-1") }}
                         {% if form.bg_perfil_img.errors %}
@@ -85,7 +85,7 @@
                     </div>
 
                     <br>
-                    <p>Cursos Inscritos</p>
+                    <h5>Cursos Inscritos</h5>
 
                     
 

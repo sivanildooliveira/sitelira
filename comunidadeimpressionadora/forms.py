@@ -34,8 +34,8 @@ class FormLogin(FlaskForm):
 class FormEditarPerfil(FlaskForm):
     username = StringField('Nome de Usuário', validators=[DataRequired()])
     email = StringField('E-mail', validators=[DataRequired(), Email()])
-    foto_perfil = FileField('Foto de Perfil', validators=[FileAllowed(['jpg', 'png', 'webp'])])
-    bg_perfil_img = FileField('Background do Perfil', validators=[FileAllowed(['jpg', 'png', 'webp'])])
+    foto_perfil = FileField('Foto de Perfil', validators=[FileAllowed(['jpg', 'png', 'jpeg', 'webp'])])
+    bg_perfil_img = FileField('Background do Perfil', validators=[FileAllowed(['jpg', 'png', 'jpeg', 'webp'])])
     bg_perfil_url = StringField('Background do Perfil URL')
 
     curso_excel = lembrar_dados = BooleanField('Execel Impressionador', default=False)

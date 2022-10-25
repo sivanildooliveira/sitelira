@@ -22,7 +22,7 @@
 	      padding-bottom: 2vh;
 	    }
 	    
-	    #foto-name-edit img {
+	    #foto-name-edit #img {
 	      display: block;
 	      width: 100px;
 	      height: 100px;
@@ -54,23 +54,21 @@
 	      margin: 5px auto;
 	      padding: 3px 20px;
 	      text-decoration: none;
-	      color: #0AC1FB;
+	      color: var(--cor1);
 	      text-align: center;
 	      font-size: .9rem;
-	      border: 1px solid #0AC1FB;
+	      border: 1px solid var(--cor1);
 	      border-radius: 3px;
 	      transition: .5s;
 	    }
 	    
 	    #foto-name-edit a:hover {
-	      background: #0AC1FB;
+	      background: var(--cor1);
 	      color: white;
 	    }
 	    
 	    #info {
-	      width: 80%;
-
-	      justify-content: space-between;
+	      width: 100%;
 	      padding-top: 10px;
 	      margin: 20px auto 0 auto;
 	      font-size: 1em;
@@ -78,22 +76,20 @@
     	  text-align: center;
  	   }
  	   
- 	   #info .sep {
- 	     border-right: 1px solid #00000010;
- 	   }
  	   
  	   #info th {
  	     font-weight: normal;
+		 width: 33%;
  	   }
  	   
  	   #info td {
- 	     color: #0AC1FB90;
+ 	     color: var(--cor1);
  	     font-weight: bolder;
  	   }
 	   
 	   #btn-cursos {
 		 width: 60%;
-		 color: #0AC1FB90;
+		 color: var(--cor1);
  	     font-weight: bolder;
 		 border: 1px solid currentColor;
 		 border-radius: 5px;
@@ -134,7 +130,7 @@
 	    }
 
 		 
-		#foto-name-edit img {
+		#foto-name-edit #img {
 	      margin-left: 1vw;
 		  width: 100px;
 		  height: 100px;
@@ -176,7 +172,7 @@
     </div>
     
     <div id="foto-name-edit">
-      <img src="{{ foto_perfil }}" alt="">
+      <div id="img"  style="background: rgb(185, 243, 185) url('{{ foto_perfil }}') center center fixed; background-size: cover;"></div>
       <span id="nome">{{ current_user.username }}</span>
 	  {% if not editor %}
       	<a href="{{ url_for('editar_perfil') }}">editar perfil</a>
