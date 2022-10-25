@@ -54,21 +54,23 @@
 	      margin: 5px auto;
 	      padding: 3px 20px;
 	      text-decoration: none;
-	      color: var(--cor1);
+	      color: #0AC1FB;
 	      text-align: center;
 	      font-size: .9rem;
-	      border: 1px solid var(--cor1);
+	      border: 1px solid #0AC1FB;
 	      border-radius: 3px;
 	      transition: .5s;
 	    }
 	    
 	    #foto-name-edit a:hover {
-	      background: var(--cor2);
+	      background: #0AC1FB;
 	      color: white;
 	    }
 	    
 	    #info {
-	      width: 100%;
+	      width: 80%;
+
+	      justify-content: space-between;
 	      padding-top: 10px;
 	      margin: 20px auto 0 auto;
 	      font-size: 1em;
@@ -76,21 +78,23 @@
     	  text-align: center;
  	   }
  	   
+ 	   #info .sep {
+ 	     border-right: 1px solid #00000010;
+ 	   }
  	   
  	   #info th {
  	     font-weight: normal;
- 	     width: 33%;
  	   }
  	   
  	   #info td {
- 	     color: var(--cor1);
+ 	     color: #0AC1FB90;
  	     font-weight: bolder;
  	   }
 	   
 	   #btn-cursos {
-		 width: 100%;
-		 color: var(--cor1);
- 	    font-weight: bolder;
+		 width: 60%;
+		 color: #0AC1FB90;
+ 	     font-weight: bolder;
 		 border: 1px solid currentColor;
 		 border-radius: 5px;
 		 outline: none;
@@ -103,7 +107,7 @@
 		visibility: hidden;
 		overflow-y: hidden;
 		list-style: none;
-		padding: 5px 0;
+		padding-left: 0;
 		transition: .3s;
 	   }
 
@@ -190,7 +194,7 @@
 			<td>{{ current_user.posts }}</td>
 			</tbody>
 		</table>
-		<ul id="list-cursos">
+		<ul id="list-cursos" class="mt-2">
 			{% for curso in current_user.cursos.split(";") %}
 				<li class="container"><span>{{ curso }}</span></li>
 			{% endfor %}

@@ -42,7 +42,4 @@ def atualizar_cursos(form):
         if "curso_" in campo.name:
             if campo.data:
                 lista_curso.append(campo.label.text)
-    retorno_lista = ""
-    for curso in lista_curso:
-        retorno_lista += f'{curso};'
-    return retorno_lista[:-1]
+    return ";".join(lista_curso)
