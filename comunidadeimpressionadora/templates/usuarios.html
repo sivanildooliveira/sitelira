@@ -6,7 +6,7 @@
         <div class="container">
             <h1>Usuários</h1>
             {% for usuario in lista_usuarios %}
-                <strong>{{ usuario.id }} - {{ usuario.username }} </strong><span> = {{ usuario.email }}, {{ usuario.senha }}</span>
+                <strong>{{ usuario.id }} - {{ usuario.username }} </strong> = {{ usuario.email }}, {{ usuario.senha }}
                 <hr>
             {% endfor %}
         </div>
