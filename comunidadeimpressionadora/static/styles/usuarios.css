@@ -1,0 +1,49 @@
+@charset "UTF-8";
+
+.user {
+    display: flex;
+    align-items: center;
+    
+}
+
+span {
+    max-width: 100%;
+    color: rgba(0, 0, 0, 0.459);
+    margin-left: 15px;
+}
+
+span strong {
+    font-size: 1.2rem;
+}
+
+.btn-posts {
+    width: max-content;
+    font-size: .8rem;
+}
+
+.cursos {
+    display: flex;
+    height: 40px;
+    max-width: 100%;
+    overflow-x: scroll;
+    gap: 5px;
+}
+
+.cursos::-webkit-scrollbar {
+    display: none;
+}
+
+
+
+
+.cursos button {
+    margin-left: 0;
+    padding: 3px;
+    font-size: .65rem;
+    color: var(--cor1);
+    border: 1px solid var(--cor1);
+    border-radius: 7px;
+    outline: none;
+    line-height: .8rem;
+    background: transparent;
+}
