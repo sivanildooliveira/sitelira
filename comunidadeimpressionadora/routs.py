@@ -6,7 +6,7 @@ from comunidadeimpressionadora.forms import FormCriarConta, FormLogin, FormEdita
 from comunidadeimpressionadora.functionss import salvar_imagem
 from comunidadeimpressionadora.models import Usuarios, Post
 from flask_login import login_user, logout_user, current_user, login_required
-from comunidadeimpressionadora.functionss import salvar_imagem, salvar_bg_imagem, atualizar_cursos
+from comunidadeimpressionadora.functionss import salvar_imagem, salvar_bg_imagem, atualizar_cursos, retur_foto_perfil
 
 @app.route('/')
 @login_required
@@ -24,7 +24,7 @@ def contato():
 @login_required
 def usuarios():
     lista_usuarios = Usuarios.query.all()
-    return render_template('usuarios.html', lista_usuarios=lista_usuarios)
+    return render_template('usuarios.html', lista_usuarios=lista_usuarios, retur_foto_perfil=retur_foto_perfil)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -105,7 +105,11 @@ def editar_perfil():
 
         if form.foto_perfil.data:
             nome_imagem = salvar_imagem(form.foto_perfil.data)
-            current_user.foto_perfil = nome_imagem
+            if nome_imagem:
+                current_user.foto_perfil = nome_imagem
+            else:
+                flash("Erro ao Salvar Foto de Perfil tente uma imagem JPG, JPEG, PNG, WEBP", 'alert-danger')
+
         
         if form.bg_perfil_url.data:
             nome_imagem = form.bg_perfil_url.data

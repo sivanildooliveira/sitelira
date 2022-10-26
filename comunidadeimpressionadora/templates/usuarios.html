@@ -1,14 +1,89 @@
 {% extends 'base.html' %}
 
 
+
+
+
 {% block body %}
 
-        <div class="container">
-            <h1>Usuários</h1>
-            {% for usuario in lista_usuarios %}
-                <strong>{{ usuario.id }} - {{ usuario.username }} </strong> = {{ usuario.email }}, {{ usuario.senha }}
-                <hr>
-            {% endfor %}
-        </div>
+    <style>
+
+        .user {
+            display: flex;
+            align-items: center;
+            
+        }
+
+        .avatar {
+            
+        }
+
+        span {
+            max-width: 100%;
+            color: rgba(0, 0, 0, 0.459);
+            margin-left: 15px;
+        }
+
+        span strong {
+            font-size: 1.2rem;
+        }
+
+        .btn-posts {
+            width: 300px;
+            font-size: .8rem;
+        }
+
+        .cursos {
+            display: flex;
+            height: 40px;
+            max-width: 100%;
+            overflow-x: scroll;
+            gap: 5px;
+        }
+
+        .cursos::-webkit-scrollbar {
+            display: none;
+        }
+
+
+        
+
+        .cursos button {
+            margin-left: 0;
+            padding: 3px;
+            font-size: .65rem;
+            color: var(--cor1);
+            border: 1px solid var(--cor1);
+            border-radius: 7px;
+            outline: none;
+            line-height: .8rem;
+            background: transparent;
+        }
+    </style>
+
+    <div class="container pt-2">
+        <h1 style="text-align: center;">Usuários</h1>
+        {% for usuario in lista_usuarios %}
+            <hr>
+            <div class="user">
+                <div class="avatar" style="background: gray url('{{ retur_foto_perfil(usuario.foto_perfil) }}') center center scroll no-repeat; background-size: cover; min-width: 80px; min-height: 80px; border-radius: 50%;"></div>
+                <span>
+                    <strong>{{ usuario.username }}</strong>
+                    <br>{{ usuario.email }}
+                    <br><a class="btn btn-success btn-posts" href="">Posts: 55</a>
+
+                </span>
+                
+            </div>
+            <div class="cursos mt-1" style="">
+                {% for curso in usuario.cursos.split(";") %}
+                    {% if curso not in ("", "não informado") %}
+                        <button> {{ curso }}</button>
+                    {% endif %}
+                {% endfor %}
+            </div> 
+            
+        {% endfor %}
+    </div>
 
 {% endblock %}
