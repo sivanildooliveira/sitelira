@@ -85,13 +85,8 @@ def perfil():
     editor = False
     foto_perfil = url_for('static', filename=f'fotos_perfil/{current_user.foto_perfil}')
     bg_perfil = url_for('static', filename=f'bg_perfil/{current_user.bg_perfil}') if  'https://' not in current_user.bg_perfil else current_user.bg_perfil
-    print(current_user.cursos)
-    n_cursos = 0
-    for c in current_user.cursos.split(";"):
-        n_cursos += 1
-    
-    print(n_cursos)
-    return render_template('perfil.html', foto_perfil=foto_perfil, bg_perfil=bg_perfil, n_cursos=n_cursos, editor=editor)
+
+    return render_template('perfil.html', foto_perfil=foto_perfil, bg_perfil=bg_perfil, editor=editor)
 
 
 
