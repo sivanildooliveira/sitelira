@@ -14,10 +14,6 @@
             
         }
 
-        .avatar {
-            
-        }
-
         span {
             max-width: 100%;
             color: rgba(0, 0, 0, 0.459);
@@ -75,7 +71,7 @@
                 </span>
                 
             </div>
-            <div class="cursos mt-1" style="">
+            <div class="cursos mt-1">
                 {% for curso in usuario.cursos.split(";") %}
                     {% if curso not in ("", "não informado") %}
                         <button> {{ curso }}</button>
