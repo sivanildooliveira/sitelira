@@ -54,21 +54,27 @@
   </div>
 
 
-  <script>
-	btn_cursos = document.getElementById('btn-cursos')
-
-	function abrirCursos() {
-		lista = document.getElementById('list-cursos')
-		lista.classList.toggle('active')
-	}
-
-	btn_cursos.addEventListener('click', abrirCursos)
-
-  </script>
+  
 
 
-{% block form_editarperfil %}
+	{% block form_editarperfil %}
+
+	{% endblock %}
+
+	
 
 {% endblock %}
 
+{% block script %}
+	<script>
+		btn_cursos = document.getElementById('btn-cursos')
+
+		function abrirCursos() {
+			lista = document.getElementById('list-cursos')
+			lista.classList.toggle('active')
+		}
+
+		btn_cursos.addEventListener('click', abrirCursos)
+
+	</script>
 {% endblock %}
