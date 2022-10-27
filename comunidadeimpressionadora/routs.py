@@ -144,3 +144,10 @@ def criar_post():
         return redirect(url_for('home'))
     return render_template('criarpost.html', form=form)
 
+@app.route('/post/<id_post>', methods=['GET', 'POST'])
+@login_required
+def exibir_post(id_post):
+    post = Post.query.get(id_post)
+
+    return render_template('exibir_post.html', post=post, avatar=retur_foto_perfil)
+
