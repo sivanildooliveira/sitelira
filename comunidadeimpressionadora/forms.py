@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
-from wtforms import StringField, PasswordField, SubmitField, BooleanField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from comunidadeimpressionadora.models import Usuarios
 from flask_login import current_user
@@ -46,9 +46,7 @@ class FormEditarPerfil(FlaskForm):
     curso_sql = lembrar_dados = BooleanField('SQL Impressionador', default=False)
 
     botao_submit_editarperfil = SubmitField('Salvar')
-    
-    
-    
+
     def validate_email(self, email):
     	
     	if current_user.email != email.data:
@@ -56,4 +54,10 @@ class FormEditarPerfil(FlaskForm):
             
             if usuario:
                 raise ValidationError(f'"{email.data}" não esta disponivel.')
+
+
+class FormCriarPost(FlaskForm):
+    titulo = StringField('Titulo do Post', validators=[DataRequired(), Length(2, 140)])
+    corpo = TextAreaField('Texto do Post', validators=[DataRequired()])
+    botao_submit = SubmitField('Publicar')
 

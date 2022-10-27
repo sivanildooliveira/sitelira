@@ -1,8 +1,9 @@
 
+from enum import auto
 from fileinput import filename
 from flask import render_template, redirect, url_for, request, flash
 from comunidadeimpressionadora import app, database#, bcrypt
-from comunidadeimpressionadora.forms import FormCriarConta, FormLogin, FormEditarPerfil
+from comunidadeimpressionadora.forms import FormCriarConta, FormLogin, FormEditarPerfil, FormCriarPost
 from comunidadeimpressionadora.functionss import salvar_imagem
 from comunidadeimpressionadora.models import Usuarios, Post
 from flask_login import login_user, logout_user, current_user, login_required
@@ -137,5 +138,12 @@ def editar_perfil():
 @app.route('/post/criar', methods=['GET', 'POST'])
 @login_required
 def criar_post():
-	return render_template('criarpost.html')
+    form = FormCriarPost()
+    if form.validate_on_submit():
+        post = Post(titulo=form.titulo.data, corpo=form.corpo.data, autor=current_user)
+        database.session.add(post)
+        database.session.commit()
+        flash("Post criado com sucesso", "alet-success")
+        return redirect(url_for('home'))
+    return render_template('criarpost.html', form=form)
 
