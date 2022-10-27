@@ -30,3 +30,19 @@ main {
     animation: hide 12s 0s forwards;
     z-index: 9998;
 }
+
+.titulo-page-center {
+    font-size: 1.3rem;
+    text-align: center;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.418);
+    
+}
+
+.subtitulo-page-center {
+    font-size: 1rem;
+    text-align: center;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.658);
+    
+}

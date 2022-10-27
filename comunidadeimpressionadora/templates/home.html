@@ -1,12 +1,31 @@
 {% extends 'base.html' %}
 
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/home.css') }}">
+{% endblock %}
 
 {% block main %}
 
-    <div class="container">
-        <h1>Coe Lira, meu 1º site ta no ar!!!!! To sabendo muito</h1><p>Esse site ta ficando legal</p>
-        <h2>Testando novo arquivo</h2>
-    </div>
+    <h1 class="titulo-page-center">Comunidade Impressionadora - hashtag treimanentos</h1>
+    <h2 class="subtitulo-page-center">Alunos, esperts e a galera da Hashtag em um só lugar</h2>
+    <hr>
+
+    {% for post in posts %}
+        <div class="row border mt-4 p-3 post">
+            <div class="col col-3">
+                <div class="avatar-100" style="background-image: url('{{ avatar(post.autor.foto_perfil) }}');"></div>
+                <span>{{ post.autor.username }}</span>
+                
+            </div>
+            <div class="col col-9">
+                <h3>{{ post.titulo }}</h3>
+                <hr>
+                <p>{{ post.corpo }}</p>
+            </div>
+        </div>
+    {% endfor %}
+    
+    
 
 {% endblock %}
 

@@ -12,7 +12,8 @@ from comunidadeimpressionadora.functionss import salvar_imagem, salvar_bg_imagem
 @app.route('/')
 @login_required
 def home():
-    return render_template('home.html')
+    posts = Post.query.all()
+    return render_template('home.html', posts=posts, avatar=retur_foto_perfil)
  
 
 @app.route('/contato')
@@ -143,7 +144,7 @@ def criar_post():
         post = Post(titulo=form.titulo.data, corpo=form.corpo.data, autor=current_user)
         database.session.add(post)
         database.session.commit()
-        flash("Post criado com sucesso", "alet-success")
+        flash("Post criado com sucesso", "alert-success")
         return redirect(url_for('home'))
     return render_template('criarpost.html', form=form)
 

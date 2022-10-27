@@ -10,7 +10,7 @@ header {
     z-index: 9999;
 }
 
-header a, span {
+header a, header span {
     color: white;
     text-decoration: none;
 }
