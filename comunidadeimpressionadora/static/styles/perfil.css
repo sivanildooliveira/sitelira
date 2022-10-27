@@ -1,10 +1,6 @@
 @charset "UTF-8";
 
 
-#cab {
-  box-shadow: 0px 1px 4px #00000085;
-min-height: calc(20vh + 110px);
-}
 
 #pf {
   width: 100%;

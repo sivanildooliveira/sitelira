@@ -14,8 +14,10 @@
 }
 
 
-.main {
+main {
     max-width: 100vw;
+    margin-top: calc(65px + 2%);
+    
 }
 
 
