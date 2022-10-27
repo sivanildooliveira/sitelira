@@ -2,6 +2,7 @@
 
 {% block head %}
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/perfil.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/posts.css') }}">
 {% endblock %}
 
 {% block main %}
@@ -14,50 +15,71 @@
 		<div id="img"  style="background: rgb(185, 243, 185) url('{{ foto_perfil }}') center center fixed; background-size: cover;"></div>
 		<span id="nome">{{ current_user.username }}</span>
 		{% if not editor %}
-		<a href="{{ url_for('editar_perfil') }}">editar perfil</a>
+			<a href="{{ url_for('editar_perfil') }}">editar perfil</a>
 
 
-		<table id="info">
-			<thead>
-			<th class="sep">ID</th>
-			<th class="sep">Cursos</th>
-			<th>Post</th>
-			</thead>
-			<tbody>
-			<td class="sep">{{ current_user.id }}</td>
+			<table id="info">
+				<thead>
+				<th class="sep">ID</th>
+				<th class="sep">Cursos</th>
+				<th>Post</th>
+				</thead>
+				<tbody>
+				<td class="sep">{{ current_user.id }}</td>
 
-			<td class="sep">
-				{% if current_user.cursos in ("não informado", "") %}
-					0
-				{% else %}
-					<button id="btn-cursos"> 
-						{{ current_user.cursos.count(";") + 1 }}
-					</button>
-				{% endif %}
-			</td>
+				<td class="sep">
+					{% if current_user.cursos in ("não informado", "") %}
+						0
+					{% else %}
+						<button id="btn-cursos"> 
+							{{ current_user.cursos.count(";") + 1 }}
+						</button>
+					{% endif %}
+				</td>
 
-			<td>{{ current_user.posts }}</td>
-			</tbody>
-		</table>
-		<div id="list-cursos" class="row justify-content-center">
-			<div class="col" style="text-align: center;">
-				Cursos <br>
-				{% for curso in current_user.cursos.split(";") %}
-					<button class="btn btn-success disabled mt-2">{{ curso }}</button>
-				{% endfor %}
+				<td>{{ len(current_user.posts) }}</td>
+				</tbody>
+			</table>
+			<div id="list-cursos" class="row justify-content-center">
+				<div class="col" style="text-align: center;">
+					Cursos <br>
+					{% for curso in current_user.cursos.split(";") %}
+						<button class="btn btn-success disabled mt-2">{{ curso }}</button>
+					{% endfor %}
+				</div>
 			</div>
-		</div>
+
+			{% for post in current_user.posts %}
+				<div class="row border mt-4 p-1 post">
+					<div class="col col-3">
+						<div class="avatar" style="background-image: url('{{ foto_perfil }}');"></div>
+						<strong class="nome">{{ current_user.username }}</strong>
+					</div>
+		
+					<div class="col ">
+						<h3 class="titulo">{{ post.titulo }}</h3>
+						<hr>
+						<p class="corpo">{{ post.corpo }} </p>
+						<small class="data-hora">{{ post.data_criacao }}</small>
+						<hr>
+						<div class="row roda-pe">
+							<button class="btn btn-secondary">Comentários</button>
+							<button class="btn btn-primary">Editar</button>
+							<button class="btn btn-danger">Apagar</button>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+
+
 		{% endif %}
     </div>
-
-
-
-  
-
 
 	{% block form_editarperfil %}
 
 	{% endblock %}
+
+	
 
 	
 

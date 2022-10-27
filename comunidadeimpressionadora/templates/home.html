@@ -31,8 +31,14 @@
                 <small class="data-hora">{{ post.data_criacao }}</small>
                 <hr>
                 <div class="row roda-pe">
+                    {% if current_user.id == post.autor.id %}
+                    <button class="btn btn-secondary">Comentários</button>
+                    <button class="btn btn-danger">Apagar</button>
+                    {% else %}
                     <button class="btn btn-primary">Curtir</button>
                     <button class="btn btn-secondary">Comentários</button>
+                    {% endif %}
+                    
                 </div>
             </div>
         </div>
