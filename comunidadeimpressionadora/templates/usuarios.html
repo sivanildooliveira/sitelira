@@ -17,7 +17,7 @@
     {% for usuario in lista_usuarios %}
         
         <div class="user">
-            <div class="avatar" style="background: gray url('{{ retur_foto_perfil(usuario.foto_perfil) }}') center center scroll no-repeat; background-size: cover; min-width: 80px; min-height: 80px; border-radius: 50%;"></div>
+            <div class="avatar" style="background-image: url('{{ retur_foto_perfil(usuario.foto_perfil) }}'); width: 80px; height: 80px; margin: 0px;"></div>
             <span>
                 <strong>{{ usuario.username }}</strong>
                 <br>{{ usuario.email }}
@@ -29,7 +29,7 @@
         <div class="cursos mt-1">
             {% for curso in usuario.cursos.split(";") %}
                 {% if curso not in ("", "não informado") %}
-                    <button> {{ curso }}</button>
+                    <span> {{ curso }}</span>
                 {% endif %}
             {% endfor %}
         </div>

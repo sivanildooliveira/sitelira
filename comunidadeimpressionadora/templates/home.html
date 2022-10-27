@@ -2,6 +2,7 @@
 
 {% block head %}
     <link rel="stylesheet" href="{{ url_for('static', filename='styles/home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/posts.css') }}">
 {% endblock %}
 
 {% block main %}
@@ -11,16 +12,28 @@
     <hr>
 
     {% for post in posts %}
-        <div class="row border mt-4 p-3 post">
+        <div class="row border mt-4 p-1 post">
             <div class="col col-3">
-                <div class="avatar-100" style="background-image: url('{{ avatar(post.autor.foto_perfil) }}');"></div>
-                <span>{{ post.autor.username }}</span>
-                
+                <div class="avatar" style="background-image: url('{{ avatar(post.autor.foto_perfil) }}');"></div>
+                <strong class="nome">{{ post.autor.username }}</strong>
+
+                <div style="text-align: center;">
+                    {% for curso in post.autor.cursos.split(";") %}
+					<span class="mt-1 cursos">{{ curso.split(' ')[0] }}</span>
+				    {% endfor %}
+                </div>
             </div>
-            <div class="col col-9">
-                <h3>{{ post.titulo }}</h3>
+
+            <div class="col ">
+                <h3 class="titulo">{{ post.titulo }}</h3>
                 <hr>
-                <p>{{ post.corpo }}</p>
+                <p class="corpo">{{ post.corpo }} </p>
+                <small class="data-hora">{{ post.data_criacao }}</small>
+                <hr>
+                <div class="row roda-pe">
+                    <button class="btn btn-primary">Curtir</button>
+                    <button class="btn btn-secondary">Comentários</button>
+                </div>
             </div>
         </div>
     {% endfor %}

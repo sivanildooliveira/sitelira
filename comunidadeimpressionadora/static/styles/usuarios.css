@@ -22,25 +22,16 @@ span strong {
 }
 
 .cursos {
-    display: flex;
-    height: 40px;
+    display: inline-block;
     max-width: 100%;
-    overflow-x: scroll;
     gap: 5px;
 }
 
-.cursos::-webkit-scrollbar {
-    display: none;
-}
 
-.cursos button {
-    margin-left: 0;
+.cursos span {
+    display: inline-block;
     padding: 3px;
-    font-size: .65rem;
-    color: var(--cor1);
-    border: 1px solid var(--cor1);
-    border-radius: 7px;
-    outline: none;
-    line-height: .8rem;
-    background: transparent;
+    font-size: .7rem;
+    border-radius: 5px;
+    background-color: rgba(52, 165, 52, 0.205);
 }

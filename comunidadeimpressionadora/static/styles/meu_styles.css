@@ -1,9 +1,7 @@
 @charset "UTF-8";
 
 
-.avatar-100 {
-    width: 100px;
-    height: 100px;
+.avatar {
     margin: auto;
     background-color: white;
     background-position: center center;

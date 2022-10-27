@@ -12,7 +12,8 @@ from comunidadeimpressionadora.functionss import salvar_imagem, salvar_bg_imagem
 @app.route('/')
 @login_required
 def home():
-    posts = Post.query.all()
+    posts = Post.query.order_by(Post.id.desc())
+    
     return render_template('home.html', posts=posts, avatar=retur_foto_perfil)
  
 
