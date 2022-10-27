@@ -6,7 +6,7 @@
     
 }
 
-span {
+.user span {
     max-width: 100%;
     color: rgba(0, 0, 0, 0.459);
     margin-left: 15px;
@@ -32,9 +32,6 @@ span strong {
 .cursos::-webkit-scrollbar {
     display: none;
 }
-
-
-
 
 .cursos button {
     margin-left: 0;
