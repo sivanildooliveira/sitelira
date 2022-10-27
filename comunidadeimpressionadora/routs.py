@@ -63,14 +63,13 @@ def login():
         
         usuario = Usuarios.query.filter_by(email=form_criarconta.email.data).first()
         login_user(usuario)
-
         flash(f'Bem Vindo {current_user.username}!', 'alert-success')
 
         if par_next:
             return redirect(par_next)
         else:
             return redirect(url_for('home'))
-        
+
     return render_template('login.html', form_login=form_login, form_criarconta=form_criarconta)
     
 
@@ -112,8 +111,6 @@ def editar_perfil():
                 current_user.foto_perfil = nome_imagem
             else:
                 flash("Erro ao Salvar Foto de Perfil tente uma imagem JPG, JPEG, PNG, WEBP", 'alert-danger')
-
-        
         if form.bg_perfil_url.data:
             nome_imagem = form.bg_perfil_url.data
             current_user.bg_perfil = nome_imagem
@@ -122,9 +119,7 @@ def editar_perfil():
             nome_imagem = salvar_bg_imagem(form.bg_perfil_img.data)
             current_user.bg_perfil = nome_imagem
 
-        
         current_user.cursos = atualizar_cursos(form)
-            
         database.session.commit()
         flash('Perfil Alterado com Sucesso!', 'alert-success')
         return redirect(url_for('perfil'))

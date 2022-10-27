@@ -14,6 +14,11 @@
 }
 
 
+body {
+    background-color: rgb(241, 241, 241);
+}
+
+
 main {
     max-width: 100vw;
     margin-top: calc(65px + 2%);
@@ -29,6 +34,11 @@ main {
     opacity: 1;
     animation: hide 12s 0s forwards;
     z-index: 9998;
+}
+
+.row {
+    margin: 0px;
+    padding: 0px;
 }
 
 .titulo-page-center {
