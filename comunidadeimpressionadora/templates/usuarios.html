@@ -11,29 +11,33 @@
 
 {% block main %}
 
-    <div class="container pt-2">
-        <h1 style="text-align: center;">Usuários</h1>
-        {% for usuario in lista_usuarios %}
-            <hr>
-            <div class="user">
-                <div class="avatar" style="background: gray url('{{ retur_foto_perfil(usuario.foto_perfil) }}') center center scroll no-repeat; background-size: cover; min-width: 80px; min-height: 80px; border-radius: 50%;"></div>
-                <span>
-                    <strong>{{ usuario.username }}</strong>
-                    <br>{{ usuario.email }}
-                    <br><a class="btn btn-success btn-posts" href="">Posts: 55</a>
+    
+    <h1 style="text-align: center;">Usuários</h1>
+    <hr>
+    {% for usuario in lista_usuarios %}
+        
+        <div class="user">
+            <div class="avatar" style="background: gray url('{{ retur_foto_perfil(usuario.foto_perfil) }}') center center scroll no-repeat; background-size: cover; min-width: 80px; min-height: 80px; border-radius: 50%;"></div>
+            <span>
+                <strong>{{ usuario.username }}</strong>
+                <br>{{ usuario.email }}
+                <br><a class="btn btn-success btn-posts" href="">Posts: 55</a>
 
-                </span>
-                
-            </div>
-            <div class="cursos mt-1">
-                {% for curso in usuario.cursos.split(";") %}
-                    {% if curso not in ("", "não informado") %}
-                        <button> {{ curso }}</button>
-                    {% endif %}
-                {% endfor %}
-            </div> 
+            </span>
             
-        {% endfor %}
-    </div>
+        </div>
+        <div class="cursos mt-1">
+            {% for curso in usuario.cursos.split(";") %}
+                {% if curso not in ("", "não informado") %}
+                    <button> {{ curso }}</button>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+
+        <hr>
+        
+    {% endfor %}
+    
 
 {% endblock %}

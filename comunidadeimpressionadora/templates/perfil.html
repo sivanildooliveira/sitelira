@@ -6,19 +6,17 @@
 
 {% block main %}
 
-<div id="cab body">
-    
     <div id="pf" style="background: rgb(203, 253, 255) url('{{ bg_perfil }}') no-repeat fixed; background-size: cover;">
       
     </div>
     
     <div id="foto-name-edit">
-      <div id="img"  style="background: rgb(185, 243, 185) url('{{ foto_perfil }}') center center fixed; background-size: cover;"></div>
-      <span id="nome">{{ current_user.username }}</span>
-	  {% if not editor %}
-      	<a href="{{ url_for('editar_perfil') }}">editar perfil</a>
-	  
-      
+		<div id="img"  style="background: rgb(185, 243, 185) url('{{ foto_perfil }}') center center fixed; background-size: cover;"></div>
+		<span id="nome">{{ current_user.username }}</span>
+		{% if not editor %}
+		<a href="{{ url_for('editar_perfil') }}">editar perfil</a>
+
+
 		<table id="info">
 			<thead>
 			<th class="sep">ID</th>
@@ -49,9 +47,9 @@
 				{% endfor %}
 			</div>
 		</div>
-	  {% endif %}
+		{% endif %}
     </div>
-  </div>
+
 
 
   
