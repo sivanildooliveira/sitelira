@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
+
+.main {
+    margin-top: calc(65px + 2%);
+}
+
 header {
     position: fixed;
     top: 0px;
@@ -84,9 +89,7 @@ header a:hover {
     
 }
 
-.body {
-    margin-top: calc(65px + 2%);
-}
+
 
 @media (max-width: 719.9px) {
     header {
