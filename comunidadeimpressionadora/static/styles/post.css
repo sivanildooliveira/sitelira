@@ -32,22 +32,35 @@
     font-size: 1.2rem;
 }
 
-.post .cursos {
-    display: inline-block;
-    padding: 3px 5px;
-    font-size: .7rem;
-    font-weight: bold;
-    border-radius: 5px;
-    color: rgba(0, 0, 0, 0.5);
-    background-color: rgba(52, 165, 52, 0.205);
-}
 
 .post .data-hora {
     display: block;
-    text-align: right;
     font-size: .8rem;
     color: rgba(0, 0, 0, 0.5);
 }
+
+.post .div-cursos {
+    display: flex;
+    gap: .5rem;
+    overflow-x: scroll;
+}
+
+.post .div-cursos::-webkit-scrollbar {
+    display: none;
+}
+
+.post .cursos {
+    padding: 3px 5px;
+    font-size: .6rem;
+    font-weight: bold;
+    border-radius: 5px;
+    color: rgba(0, 0, 0, 0.5);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background-color: rgba(52, 165, 52, 0.205);
+}
+
 
 .post hr {
     margin: 2px;

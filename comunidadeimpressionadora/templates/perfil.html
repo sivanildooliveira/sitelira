@@ -55,12 +55,12 @@
 					<div class="avatar" style="background-image: url('{{ foto_perfil }}');"></div>
 					<div class="nome-cursos-data">
 						<strong class="nome">{{ post.autor.username }}</strong>
-						<small class="data-hora">{{ post.data_criacao }}</small>
+						<small class="data-hora"> Data de Publicação: {{ post.data_criacao.strftime("%d/%m/%Y - %H:%M") }}</small>
 					</div>
 				</div>
 				<hr>
 				<div class="row">
-					<a href="#" class="mb-1 titulo">{{ post.titulo }}</a>
+					<a href="{{ url_for('exibir_post', id_post=post.id) }}" class="mb-1 titulo">{{ post.titulo }}</a>
 					<p class="corpo">{{ post.corpo }} </p>
 				</div>
 				<div class="row roda-pe">

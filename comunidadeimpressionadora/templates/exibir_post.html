@@ -12,12 +12,12 @@
                 <div class="avatar" style="background-image: url('{{ avatar(post.autor.foto_perfil) }}');"></div>
                 <div class="nome-cursos-data">
                     <strong class="nome">{{ post.autor.username }}</strong>
+                    <small class="data-hora"> Data de Publicação: {{ post.data_criacao.strftime("%d/%m/%Y - %H:%M") }}</small>
                     <div class="div-cursos">
                         {% for curso in post.autor.cursos.split(";") %}
                             <span class="mt-1 cursos">{{ curso }}</span>
                         {% endfor %}
                     </div>
-                    <small class="data-hora">{{ post.data_criacao }}</small>
                 </div>
             </div>
             <hr>
