@@ -149,5 +149,7 @@ def criar_post():
 def exibir_post(id_post):
     post = Post.query.get(id_post)
 
+    
+
     return render_template('exibir_post.html', post=post, avatar=retur_foto_perfil)
 
