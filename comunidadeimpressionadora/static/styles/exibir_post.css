@@ -1,2 +1,13 @@
 @charset "UTF-8";
 
+.inactive {
+    display: none;
+}
+
+#edicao {
+    display: none;
+}
+
+#edicao.active {
+    display: block;
+}

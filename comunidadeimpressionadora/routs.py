@@ -147,9 +147,10 @@ def criar_post():
 @app.route('/post/<id_post>', methods=['GET', 'POST'])
 @login_required
 def exibir_post(id_post):
+    form = FormCriarPost()
     post = Post.query.get(id_post)
 
     
 
-    return render_template('exibir_post.html', post=post, avatar=retur_foto_perfil)
+    return render_template('exibir_post.html', post=post, form=form, avatar=retur_foto_perfil)
 
