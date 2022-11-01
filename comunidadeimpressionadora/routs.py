@@ -7,14 +7,14 @@ from comunidadeimpressionadora.forms import FormCriarConta, FormLogin, FormEdita
 from comunidadeimpressionadora.functionss import salvar_imagem
 from comunidadeimpressionadora.models import Usuarios, Post
 from flask_login import login_user, logout_user, current_user, login_required
-from comunidadeimpressionadora.functionss import salvar_imagem, salvar_bg_imagem, atualizar_cursos, retur_foto_perfil
+from comunidadeimpressionadora.functionss import salvar_imagem, salvar_bg_imagem
 
 @app.route('/')
 @login_required
 def home():
     posts = Post.query.order_by(Post.id.desc())
     
-    return render_template('home.html', posts=posts, avatar=retur_foto_perfil)
+    return render_template('home.html', posts=posts)
  
 
 @app.route('/contato')
@@ -27,7 +27,7 @@ def contato():
 @login_required
 def usuarios():
     lista_usuarios = Usuarios.query.all()
-    return render_template('usuarios.html', lista_usuarios=lista_usuarios, retur_foto_perfil=retur_foto_perfil)
+    return render_template('usuarios.html', lista_usuarios=lista_usuarios)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -119,7 +119,7 @@ def editar_perfil():
             nome_imagem = salvar_bg_imagem(form.bg_perfil_img.data)
             current_user.bg_perfil = nome_imagem
 
-        current_user.cursos = atualizar_cursos(form)
+        current_user.atualizar_cursos(form)
         database.session.commit()
         flash('Perfil Alterado com Sucesso!', 'alert-success')
         return redirect(url_for('perfil'))
@@ -152,5 +152,5 @@ def exibir_post(id_post):
 
     
 
-    return render_template('exibir_post.html', post=post, form=form, avatar=retur_foto_perfil)
+    return render_template('exibir_post.html', post=post, form=form)
 

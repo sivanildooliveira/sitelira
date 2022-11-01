@@ -10,7 +10,7 @@
     <div id="pf" style="background: rgb(203, 253, 255) url('{{ bg_perfil }}') no-repeat fixed; background-size: cover;"></div>
     
     <div id="foto-name-edit">
-		<div id="img" class="avatar"  style="background-image: url('{{ foto_perfil }}')"></div>
+		<div id="img" class="avatar"  style="background-image: url('{{ current_user.retur_foto_perfil() }}')"></div>
 		<span id="nome">{{ current_user.username }}</span>
 		{% if not editor %}
 			<a href="{{ url_for('editar_perfil') }}">editar perfil</a>
@@ -26,15 +26,13 @@
 					<td class="sep">{{ current_user.id }}</td>
 
 					<td class="sep">
-						{% if current_user.cursos in ("não informado", "") %}
-							0
-						{% else %}
-							<button id="btn-cursos"> 
-								{{ current_user.cursos.count(";") + 1 }}
-							</button>
-						{% endif %}
+						<button id="btn-cursos"> 
+							{{ current_user.quant_cursos() }}
+						</button>
 					</td>
-					<td>{{ len(current_user.posts) }}</td>
+
+					<td>{{ current_user.quant_posts() }}</td>
+
 				</tbody>
 
 			</table>
@@ -42,7 +40,9 @@
 				<div class="col" style="text-align: center;">
 					Cursos <br>
 					{% for curso in current_user.cursos.split(";") %}
+						
 						<button class="btn btn-success disabled mt-2">{{ curso }}</button>
+						
 					{% endfor %}
 				</div>
 			</div>
@@ -52,10 +52,10 @@
 		{% for post in current_user.posts %}
 			<div class="row border mt-4 p-1 post">
 				<div class="row">
-					<div class="avatar" style="background-image: url('{{ foto_perfil }}');"></div>
+					<div class="avatar" style="background-image: url('{{ current_user.retur_foto_perfil() }}');"></div>
 					<div class="nome-cursos-data">
 						<strong class="nome">{{ post.autor.username }}</strong>
-						<small class="data-hora"> Data de Publicação: {{ post.data_criacao.strftime("%d/%m/%Y - %H:%M") }}</small>
+						<small class="data-hora"> Data de Publicação: {{ post.data_hora_post() }}</small>
 					</div>
 				</div>
 				<hr>
@@ -64,8 +64,8 @@
 					<p class="corpo">{{ post.corpo }} </p>
 				</div>
 				<div class="row roda-pe">
-					<button class="btn btn-secondary">Comentários</button>
-					<button class="btn btn-danger">Apagar</button>
+					<a class="btn btn-secondary">Comentários</a>
+					<a class="btn btn-danger">Apagar</a>
 				</div>
 			</div>
 		{% endfor %}

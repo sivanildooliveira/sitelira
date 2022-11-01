@@ -14,7 +14,7 @@
     {% for post in posts %}
         <div class="row border mt-4 p-1 post">
             <div class="row">
-                <div class="avatar" style="background-image: url('{{ avatar(post.autor.foto_perfil) }}');"></div>
+                <div class="avatar" style="background-image: url('{{ post.autor.retur_foto_perfil() }}');"></div>
                 <div class="nome-cursos-data">
                     <strong class="nome">{{ post.autor.username }}</strong>
                     <small class="data-hora"> Data de Publicação: {{ post.data_criacao.strftime("%d/%m/%Y - %H:%M") }}</small>
@@ -32,11 +32,11 @@
             </div>
             <div class="row roda-pe">
                 {% if current_user.id == post.autor.id %}
-                <button class="btn btn-secondary">Comentários</button>
-                <button class="btn btn-danger">Apagar</button>
+                <a id="btn-editar" href="#edicao" class="btn btn-primary" >Editar</a>
+                    <a href="#" class="btn btn-danger">Apagar</a>
                 {% else %}
-                <button class="btn btn-primary">Curtir</button>
-                <button class="btn btn-secondary">Comentários</button>
+                <a class="btn btn-primary">Curtir</a>
+                <a class="btn btn-secondary">Comentários</a>
                 {% endif %}
                 
             </div>

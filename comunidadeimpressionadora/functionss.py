@@ -1,5 +1,4 @@
 from comunidadeimpressionadora import app
-from flask import flash, url_for
 import secrets
 import os
 from PIL import Image
@@ -39,15 +38,3 @@ def salvar_bg_imagem(imagem):
 
     return nome_arquivo
 
-
-def atualizar_cursos(form):
-    lista_curso = []
-    for campo in form:
-        if "curso_" in campo.name:
-            if campo.data:
-                lista_curso.append(campo.label.text)
-    return ";".join(lista_curso)
-
-
-def retur_foto_perfil(nome):
-    return url_for('static', filename=f'fotos_perfil/{nome}')
