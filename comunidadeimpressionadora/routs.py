@@ -153,6 +153,13 @@ def exibir_post(id_post, pg='home'):
     post = Post.query.get(id_post)
     global pagina 
     pagina = pg
+
+    if form.validate_on_submit():
+    	post.titulo = form.titulo.data
+    	post.corpo = form.corpo.data
+    	database.session.commit()
+
+
     if current_user == post.autor:
         form.titulo.data = post.titulo
         form.corpo.data = post.corpo
