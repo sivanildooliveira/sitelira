@@ -153,6 +153,12 @@ def exibir_post(id_post, pg='home'):
     post = Post.query.get(id_post)
     global pagina 
     pagina = pg
+
+    if form.validate_on_submit():
+        post.titulo = form.titulo.data
+        post.corpo = form.corpo.data
+        database.session.commit()
+        flash("Atualização salva com sucesso!", "alert-success")
     if current_user == post.autor:
         form.titulo.data = post.titulo
         form.corpo.data = post.corpo
@@ -168,7 +174,7 @@ def excluir_post(id_post):
     if current_user == post.autor:
         database.session.delete(post)
         database.session.commit()
-        flash("Post Excluido")
+        flash("Post Excluido", "alert-warning")
         return redirect(url_for(pagina))
     else:
         return abort(403)
