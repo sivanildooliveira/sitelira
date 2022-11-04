@@ -155,18 +155,10 @@ def exibir_post(id_post, pg='home'):
     pagina = pg
 
     if form.validate_on_submit():
-<<<<<<< HEAD
         post.titulo = form.titulo.data
         post.corpo = form.corpo.data
         database.session.commit()
         flash("Atualização salva com sucesso!", "alert-success")
-=======
-    	post.titulo = form.titulo.data
-    	post.corpo = form.corpo.data
-    	database.session.commit()
-
-
->>>>>>> 01f7a582a0f9c9015cffcc7915cd072f9b32fdea
     if current_user == post.autor:
         form.titulo.data = post.titulo
         form.corpo.data = post.corpo
