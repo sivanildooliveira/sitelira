@@ -1,6 +1,7 @@
 
 from enum import auto
 from fileinput import filename
+from turtle import pos
 from flask import render_template, redirect, url_for, request, flash
 from comunidadeimpressionadora import app, database#, bcrypt
 from comunidadeimpressionadora.forms import FormCriarConta, FormLogin, FormEditarPerfil, FormCriarPost
@@ -149,8 +150,8 @@ def criar_post():
 def exibir_post(id_post):
     form = FormCriarPost()
     post = Post.query.get(id_post)
-
-    
-
-    return render_template('exibir_post.html', post=post, form=form)
+    if current_user == post.autor:
+        return render_template('exibir_post.html', post=post, form=form)
+    else:
+        return render_template('exibir_post.html', post=post)
 
