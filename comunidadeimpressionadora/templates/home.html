@@ -27,18 +27,11 @@
             </div>
             <hr>
             <div class="row">
-                <a href="{{ url_for('exibir_post', id_post=post.id) }}" class="mb-1 titulo">{{ post.titulo }}</a>
+                <a href="{{ url_for('exibir_post', id_post=post.id, pg='home') }}" class="mb-1 titulo">{{ post.titulo }}</a>
                 <p class="corpo">{{ post.corpo }} </p>
             </div>
             <div class="row roda-pe">
-                {% if current_user.id == post.autor.id %}
-                <a id="btn-editar" href="#edicao" class="btn btn-primary" >Editar</a>
-                    <a href="#" class="btn btn-danger">Apagar</a>
-                {% else %}
-                <a class="btn btn-primary">Curtir</a>
-                <a class="btn btn-secondary">Comentários</a>
-                {% endif %}
-                
+
             </div>
         </div>
     {% endfor %}

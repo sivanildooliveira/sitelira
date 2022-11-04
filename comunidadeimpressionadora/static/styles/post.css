@@ -82,7 +82,7 @@
     word-wrap: break-word;
 }
 
-.post .roda-pe {
+.post .roda-pe  {
     display: flex;
     justify-content: right;
     gap: 10px;
@@ -90,6 +90,6 @@
 }
 
 
-.post .roda-pe a {
+.post .roda-pe a, .post .roda-pe button {
     width: auto;
 }

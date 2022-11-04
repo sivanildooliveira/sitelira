@@ -9,3 +9,7 @@
 #edicao.active {
     display: block;
 }
+
+#edicao .corpo {
+    height: 10rem;
+}

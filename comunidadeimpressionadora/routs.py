@@ -1,8 +1,9 @@
 
 from enum import auto
 from fileinput import filename
+from re import S
 from turtle import pos
-from flask import render_template, redirect, url_for, request, flash
+from flask import render_template, redirect, url_for, request, flash, abort
 from comunidadeimpressionadora import app, database#, bcrypt
 from comunidadeimpressionadora.forms import FormCriarConta, FormLogin, FormEditarPerfil, FormCriarPost
 from comunidadeimpressionadora.functionss import salvar_imagem
@@ -145,13 +146,29 @@ def criar_post():
         return redirect(url_for('home'))
     return render_template('criarpost.html', form=form)
 
-@app.route('/post/<id_post>', methods=['GET', 'POST'])
+@app.route('/post/<id_post>&<pg>', methods=['GET', 'POST'])
 @login_required
-def exibir_post(id_post):
+def exibir_post(id_post, pg='home'):
     form = FormCriarPost()
     post = Post.query.get(id_post)
+    global pagina 
+    pagina = pg
     if current_user == post.autor:
+        form.titulo.data = post.titulo
+        form.corpo.data = post.corpo
         return render_template('exibir_post.html', post=post, form=form)
     else:
         return render_template('exibir_post.html', post=post)
 
+
+@app.route('/post/<id_post>/excluir', methods=['GET', 'POST'])
+@login_required
+def excluir_post(id_post):
+    post = Post.query.get(id_post)
+    if current_user == post.autor:
+        database.session.delete(post)
+        database.session.commit()
+        flash("Post Excluido")
+        return redirect(url_for(pagina))
+    else:
+        return abort(403)
