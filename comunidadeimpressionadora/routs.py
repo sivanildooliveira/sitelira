@@ -56,7 +56,6 @@ def login():
         par_next = request.args.get('next')
         #criar usuario
         senha_criptografada = form_criarconta.senha.data#bcrypt.generate_password_hash(form_criarconta.senha.data)
-        print(senha_criptografada)
         usuario = Usuarios(username=form_criarconta.username.data.title(), email=form_criarconta.email.data, senha=senha_criptografada)
         #adicionar usuario a sessao
         database.session.add(usuario)
